@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>{% block title %}prun.in{% endblock %}</title>
+    <!-- Modernizr -->
+    <script src="/scripts/modernizr-1.6.min.js" type="text/javascript"></script>
+    <!-- jQuery -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js" type="text/javascript"></script>
+    <!-- YUI3 CSS-Base -->
+    <link href="//yui.yahooapis.com/3.2.0/build/cssbase/base-min.css" rel="stylesheet" type="text/css">
+    <link href="/stylesheets/site.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <div id="page">
+        <header>
+            <div>
+                prun.in
+            </div>
+            <nav class="authentication">
+                {% if not user %}
+                    <a href="{{ login_url }}">Sign-in</a>
+                {% else %}
+                    <a href="{{ logout_url }}">Sign-out</a>
+                {% endif %}
+            </nav>
+        </header>
+        <div id="content">
+            {% block content %} {% endblock %}
+        </div>
+        <footer>
+            &copy; CodeMangler, 2010. All rights reserved.
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,49 @@
+body
+{
+    background-color: #FFCC66;
+    font-size: .75em;
+    font-family: Verdana, Helvetica, Sans-Serif;
+    padding: 0;
+    margin: auto; /* Set margin-left = margin-right = auto, with text-align = center for centerd div on page */
+    text-align: center;
+    color: #696969;
+    width: 1000px;
+}
+
+header
+{
+	margin: 0px;
+	padding: 0px;
+}
+
+footer
+{
+	margin: 0px;
+	padding: 10px 0px 0px 10px;
+	border-top: thin black solid;
+	background-color: black;
+	color: white;
+	height: 100%;
+}
+
+#page
+{
+	width: 90%;
+	text-align: left;
+	background-color: #FFFAE4;
+	margin: 0px auto;
+	padding: 0px;
+    -webkit-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.error
+{
+    color: red;
+}
+
+.message
+{
+    border: black solid 1px;
+}

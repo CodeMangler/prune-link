@@ -1,0 +1,49 @@
+application: prune-link
+version: 1
+runtime: python
+api_version: 1
+
+handlers:
+- url: /favicon.ico
+  static_files: favicon.ico
+  upload: /.*
+
+- url: /stylesheets
+  static_dir: stylesheets
+
+- url: /scripts
+  static_dir: scripts
+
+- url: /task/linkinfo
+  script: /prune/tasks/linkinfo.py
+  login: admin
+
+- url: /task/stats
+  script: /prune/tasks/stats.py
+  login: admin
+
+- url: /stats/.*
+  script: /prune/handlers/stats.py
+
+- url: /profile/.*
+  script: /prune/handlers/profile.py
+
+- url: .*
+  script: /prune/main.py
+
+skip_files:
+- ^(.*/)?app\.yaml
+- ^(.*/)?app\.yml
+- ^(.*/)?index\.yaml
+- ^(.*/)?index\.yml
+- ^(.*/)?#.*#
+- ^(.*/)?.*~
+- ^(.*/)?.*\.py[co]
+- ^(.*/)?.*/RCS/.*
+- ^(.*/)?\..*
+- ^(.*/)?.*\.bak$
+- ^(.*/)?.*/tests/.*
+- ^(.*/)?.*\.git.*
+- ^(.*/)?.*\.idea.*
+- ^(.*/)?.*/out/.*
+- ^(.*/)?.*\.iml

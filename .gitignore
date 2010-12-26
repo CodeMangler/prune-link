@@ -1,0 +1,12 @@
+*.db
+*.log
+*/sessions/*
+/out/*
+*.~*
+*.bak
+*.table
+*.pid
+*.tmp*
+*.lock
+*idea*/*
+*.pyc
