@@ -64,18 +64,26 @@ class PrunUser(db.Model):
 
     @staticmethod
     def find(user):
-        if isinstance(user, User):
-            query = db.GqlQuery('SELECT * FROM PrunUser WHERE user = :1', user)
-        elif str(user).find('@') != -1:
-            query = db.GqlQuery('SELECT * FROM PrunUser WHERE user_email = :1', user)
-        else:
-            query = db.GqlQuery('SELECT * FROM PrunUser WHERE user_id = :1', user)
+        memcache_key = "PrunUser_" + str(user)
+        prun_user = memcache.get(memcache_key)
 
-        results = query.fetch(1)
-        if len(results) != 1: # We expect _exactly_ one user that matches the criteria..
-            return None
-        else:
-            return results[0]
+        if not prun_user:
+            if isinstance(user, User):
+                query = db.GqlQuery('SELECT * FROM PrunUser WHERE user = :1', user)
+            elif str(user).find('@') != -1:
+                query = db.GqlQuery('SELECT * FROM PrunUser WHERE user_email = :1', user)
+            else:
+                query = db.GqlQuery('SELECT * FROM PrunUser WHERE user_id = :1', user)
+
+            results = query.fetch(1)
+            if len(results) != 1: # We expect _exactly_ one user that matches the criteria..
+                prun_user = None
+            else:
+                prun_user = results[0]
+
+            memcache.set(memcache_key, prun_user)
+
+        return prun_user
 
     @staticmethod
     def create(user):
@@ -131,7 +139,10 @@ class Profile(db.Model):
 
 class RequestData(db.Model):
     request_url = db.StringProperty()
+    long_url = db.StringProperty()
     short_url = db.StringProperty() # Short/Aggregate URL
+    custom_short_url = db.StringProperty()
+    request_method = db.StringProperty()
     request_address = db.StringProperty()
     referrer = db.StringProperty()
     raw_headers = db.TextProperty()

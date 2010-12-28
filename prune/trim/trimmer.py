@@ -1,17 +1,15 @@
-import random
-from string import join
 from prune.models.db import *
 from prune.utils import constants
+from prune.trim.namegenerator import NameGenerator
 
 __author__ = 'CodeMangler'
 
 class Trimmer:
-    VALID_CHARS = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
-
-    def __init__(self, url_to_trim):
+    def __init__(self, url_to_trim, name_generator = NameGenerator()):
         self.url = url_to_trim
+        self.name_generator = name_generator
 
-    def shorten(self, user=None):
+    def shorten(self, custom_short_url, user=None):
         user_link = None
         prun_user = None
 
@@ -26,7 +24,7 @@ class Trimmer:
         if not existing_user_link: # Nothing found, so create new..
             short_url = ''
             while True:
-                short_url = self.generate_random_sequence(constants.SHORT_LINK_LENGTH)
+                short_url = self.name_generator.generate(constants.SHORT_LINK_LENGTH)
                 existing_short_link = Link.find_by_short_url(short_url) # If the short link is taken, loop back and generate another..
                 if not existing_short_link:
                     break
@@ -46,7 +44,7 @@ class Trimmer:
         if not aggregate_link: # If no existing aggregate URL found, create one..
             aggregate_url = ''
             while True:
-                aggregate_url = self.generate_random_sequence(constants.AGGREGATE_LINK_LENGTH)
+                aggregate_url = self.name_generator.generate(constants.AGGREGATE_LINK_LENGTH)
                 existing_aggregate_link = AggregateLink.find_by_aggregate_url(aggregate_url) # If the link is already taken, loop back and generate another..
                 if not existing_aggregate_link:
                     break
@@ -64,9 +62,3 @@ class Trimmer:
             user_link.put()
 
         return short_url
-
-    def generate_random_sequence(self, length):
-        random_id = []
-        for i in range(0, length):
-            random_id.append(random.choice(self.VALID_CHARS))
-        return join(random_id, '')

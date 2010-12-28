@@ -7,6 +7,8 @@ from prune.utils.template_utils import render_template
 from prune.utils.url_utils import *
 from prune.trim.resolver import Resolver
 from prune.trim.trimmer import Trimmer
+from prune.trim.namegenerator import NameGenerator
+from prune.models.db import PrunUser
 from prune.models.request_logger import RequestLogger
 from prune.utils.constants import RequestResult
 
@@ -16,21 +18,46 @@ __author__ = 'CodeMangler'
 
 class IndexHandler(webapp.RequestHandler):
     def get(self):
-        # Get the requested path
-        # If the path is empty, show empty home page
-        # If the path is a URL itself, create a new short link (home page with expanded link populated) (and the aggregate link and everything else..)
-        # If the path is a short link id, fetch the expanded URL and redirect (301/302?) to it (or show stats if it's an aggregate)
-        # If all else fails, show the error page
         request_path = path(self.request)
-        user = users.get_current_user()
+        self.initialize_members('GET')
 
-        logger = RequestLogger(self.request.url, str(self.request.headers), self.request.remote_addr, os.getenv('HTTP_REFERER'), user)
+        if is_valid_url(request_path):
+            self.shorten(request_path, None, self.user)
+        else:
+            self.resolve(request_path, self.user)
 
-        template_parameters = {
-            "user" : user,
-            "login_url" : users.create_login_url(self.request.path),
-            "logout_url" : users.create_logout_url(self.request.path)
+    def post(self):
+        long_url = self.request.get('long-url')
+        custom_short_url = self.request.get('custom-short-url')
+        self.initialize_members('POST')
+        self.shorten(long_url, custom_short_url, self.user) # Accept everything.. Is filtering out bad URLs any good?
+
+    def initialize_members(self, request_method):
+        self.user = users.get_current_user()
+        self.logger = RequestLogger(self.request.url, request_method, str(self.request.headers), self.request.remote_addr, os.getenv('HTTP_REFERER'), self.user)
+        self.template_parameters = {
+            "user": self.user,
+            "user-id": PrunUser.find_or_create(self.user).key().id() if self.user else None,
+            "login_url": users.create_login_url(self.request.path),
+            "logout_url": users.create_logout_url(self.request.path)
         }
+
+    def shorten(self, url_to_shorten, custom_short_url, user):
+        short_url = Trimmer(url_to_shorten).shorten(custom_short_url, user)
+        self.template_parameters["short_url"] = short_url
+
+        if short_url != custom_short_url:
+            self.template_parameters["custom_short_url_error_message"] = 'The selected custom short URL already exists, and hece we\'ve generated a new short URL'
+
+        self.logger.log(url_to_shorten, custom_short_url, short_url, RequestResult.NEW_SHORT_URL_CREATED)
+        taskqueue.add(url='/task/linkinfo', params={'short_url': short_url}) # Update Link Info
+
+        self.response.out.write(render_template("index.html", self.template_parameters))
+
+    def resolve(self, request_path, user):
+        if self.is_empty(request_path):
+            self.response.out.write(render_template("index.html", self.template_parameters))
+            return
 
         resolver = self.resolver_for(request_path)
         if resolver.is_resolvable():
@@ -39,23 +66,17 @@ class IndexHandler(webapp.RequestHandler):
             else:
                 # No logging for aggregate url requests since they resolve to their stats.. Logging them would pollute stats..
                 resolved_url = resolver.resolved_url()
-                logger.log(request_path, RequestResult.SHORT_URL_RESOLVED)
-                taskqueue.add(url='/task/stats', params={'request_data_key': logger.data().key()}) # Update Stats
+                self.logger.log(resolved_url, None, request_path, RequestResult.SHORT_URL_RESOLVED)
+                taskqueue.add(url='/task/stats', params={'request_data_key': self.logger.data().key()}) # Update Stats
 
             self.redirect(resolved_url)
-        elif self.is_empty(request_path):
-            self.response.out.write(render_template("index.html", template_parameters))
-        elif is_valid_url(request_path):
-            short_url = Trimmer(request_path).shorten(user)
-            template_parameters["short_url"] = short_url
-            logger.log(short_url, RequestResult.NEW_SHORT_URL_CREATED)
-            taskqueue.add(url='/task/linkinfo', params={'short_url': short_url}) # Update Link Info
-
-            self.response.out.write(render_template("index.html", template_parameters))
         else:
-            logger.log(None, RequestResult.ERROR, '404: /{path} not found'.format(**{"path": request_path}))
-            self.error(404) # Send a HTTP Not Found
-            self.response.out.write(render_template("error.html", {"message" : "The requested page was not found"}))
+            self.show_error_page("The requested page was not found", '404: /{0} not found'.format(request_path))
+
+    def show_error_page(self, error_message, log_message):
+        self.logger.log(None, None, None, RequestResult.ERROR, log_message)
+        self.error(404) # Send a HTTP Not Found
+        self.response.out.write(render_template("error.html", {"message": error_message}))
 
     def resolver_for(self, request_path):
         resolver_memcache_key = 'Resolver_' + request_path

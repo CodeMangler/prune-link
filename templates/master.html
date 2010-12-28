@@ -11,25 +11,38 @@
     <link href="/stylesheets/site.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-    <div id="page">
-        <header>
-            <div>
+<div id="page">
+    <header>
+        <div id="top-bar"></div>
+        <div id="nav-bar">
+            <nav class="primary">
+                <ul>
+                    <li><a href="blog.prun.in">Blog</a></li>
+                    <li><a href="apidocs.prun.in">API</a></li>
+                    <li><a href="/about">About</a></li>
+                </ul>
+            </nav>
+            <div id="logo">
                 prun.in
             </div>
             <nav class="authentication">
-                {% if not user %}
-                    <a href="{{ login_url }}">Sign-in</a>
-                {% else %}
-                    <a href="{{ logout_url }}">Sign-out</a>
-                {% endif %}
+                <ul>
+                    {% if not user %}
+                    <li><a href="{{ login_url }}">Login</a></li>
+                    {% else %}
+                    <li><a href="/profile/{{ user_id }}">Profile</a></li>
+                    <li><a href="{{ logout_url }}">Logout</a></li>
+                    {% endif %}
+                </ul>
             </nav>
-        </header>
-        <div id="content">
-            {% block content %} {% endblock %}
         </div>
-        <footer>
-            &copy; CodeMangler, 2010. All rights reserved.
-        </footer>
+    </header>
+    <div id="content">
+        {% block content %} {% endblock %}
     </div>
+    <footer>
+        &copy; CodeMangler, 2010. All rights reserved.
+    </footer>
+</div>
 </body>
 </html>

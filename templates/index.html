@@ -1,9 +1,9 @@
 {% extends "master.html" %}
 
 {% block content %}
-<form action="/">
-    <label for="url">URL:</label> <input name="url" id="url" type="text" />
-    <label for="custom-short-url">Custom Short-URL:</label> <input name="custom-short-url" id="custom-short-url" type="text" />
+<form action="/" method="post">
+    <input name="long-url" id="long-url" type="text" />
+    <label for="custom-short-url">Custom Short URL:</label><input name="custom-short-url" id="custom-short-url" type="text" />
     <input type="submit" value="Shorten"/>
 </form>
 {% if short_url %}
