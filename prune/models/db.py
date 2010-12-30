@@ -1,6 +1,8 @@
 from google.appengine.api import memcache
 from google.appengine.api.users import User
 from google.appengine.ext import db
+from prune.utils.url_utils import gravatar_picture_url
+import re
 
 class Link(db.Model):
     short_url = db.StringProperty()
@@ -62,6 +64,15 @@ class PrunUser(db.Model):
     def id(self):
         return self.key().id()
 
+    def has_valid_email(self):
+        if self.user_email:
+            return re.match('.*?@.*?\..*?', self.user_email) is not None
+        return False
+
+    @classmethod
+    def find_by_id(cls, user_id):
+        return PrunUser.get_by_id(user_id)
+
     @staticmethod
     def find(user):
         memcache_key = "PrunUser_" + str(user)
@@ -87,7 +98,7 @@ class PrunUser(db.Model):
 
     @staticmethod
     def create(user):
-        prun_user= PrunUser()
+        prun_user = PrunUser()
         if isinstance(user, User):
             prun_user.user = user
             prun_user.user_email = user.email()
@@ -106,6 +117,45 @@ class PrunUser(db.Model):
         if result is None:
             result = PrunUser.create(user)
         return result
+
+class UserProfile(db.Model):
+    prun_user_id = db.IntegerProperty()
+    display_name = db.StringProperty(default=None)
+    picture_url = db.StringProperty(default=None)
+    about = db.StringProperty(multiline=True, default=None)
+    websites = db.StringListProperty(default=None)
+    twitter = db.StringProperty(default=None)
+    created_on = db.DateTimeProperty(auto_now_add=True)
+    modified_on = db.DateTimeProperty(auto_now=True)
+
+    def uncache(self):
+        memcache_key = 'UserProfile_' + str(self.prun_user_id)
+        memcache.delete(memcache_key)
+
+    @classmethod
+    def find_or_create(cls, prun_user):
+        prun_user_id = prun_user.id()
+        memcache_key = 'UserProfile_' + str(prun_user_id)
+        user_profile = memcache.get(memcache_key)
+
+        if user_profile:
+            return user_profile
+        else:
+            results = db.GqlQuery('SELECT * from UserProfile WHERE prun_user_id = :1', prun_user_id).fetch(1)
+            if results:
+                user_profile = results[0]
+            else:
+                user_profile = UserProfile(prun_user_id = prun_user_id)
+                if prun_user.has_valid_email():
+                    user_profile.picture_url = gravatar_picture_url(prun_user.user_email)
+                user_profile.display_name = 'CodeMangler'
+                user_profile.about = 'Some random stuff'
+                user_profile.websites = ['http://prun.in', 'http://dharampal.name']
+                user_profile.twitter = 'CodeMangler'
+                user_profile.put()
+
+            memcache.set(memcache_key, user_profile)
+            return user_profile
 
 class UserLink(db.Model):
     prun_user_id = db.IntegerProperty()
@@ -127,15 +177,6 @@ class UserLink(db.Model):
                 memcache.set(memcache_key, user_link) # Could do db.model_to_protobuff(user_link), but is it worth it?
 
         return user_link
-
-class Profile(db.Model):
-    prun_user_id = db.IntegerProperty()
-    display_name = db.StringProperty()
-    about = db.StringProperty(multiline=True)
-    websites = db.StringListProperty(default=None)
-    social_profiles = db.StringListProperty(default=None)
-    created_on = db.DateTimeProperty(auto_now_add=True)
-    modified_on = db.DateTimeProperty(auto_now=True)
 
 class RequestData(db.Model):
     request_url = db.StringProperty()

@@ -4,38 +4,32 @@ body
     font-size: .75em;
     font-family: Verdana, Helvetica, Sans-Serif;
     padding: 0;
-    margin: auto; /* Set margin-left = margin-right = auto, with text-align = center for centerd div on page */
-    text-align: center;
+    margin: 0;
     color: #696969;
-    width: 1000px;
 }
 
 header
 {
-	margin: 0px;
-	padding: 0px;
+	margin: 0;
+	padding: 0;
+    width: 100%;
 }
 
 footer
 {
-	margin: 0px;
-	padding: 10px 0px 0px 10px;
+	padding: 10px 0 0 10px;
 	border-top: thin black solid;
 	background-color: black;
 	color: white;
-	height: 100%;
+    margin: auto;
+    text-align: center;
+	height: 50px;
+    width: 100%;
 }
 
 #page
 {
-	width: 90%;
-	text-align: left;
-	background-color: #FFFAE4;
-	margin: 0px auto;
-	padding: 0px;
-    -webkit-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
-    -moz-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
-    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+    width: 100%;
 }
 
 .error
@@ -46,4 +40,63 @@ footer
 .message
 {
     border: black solid 1px;
+}
+
+#top-bar
+{
+    height: 5px;
+    background-color: black;
+}
+
+#logo
+{
+    display: inline-block;
+    font-size: 26px;
+    font-family: Papyrus, Verdana, Helvetica, Sans-Serif;
+    font-weight: bold;
+    color: white;
+    background-color: black;
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
+#nav-bar
+{
+    text-align: center;
+    margin: 0 auto;
+    display: block;
+}
+
+nav.primary
+{
+    display: inline-block;
+}
+
+nav.primary ul li
+{
+    list-style: none;
+    display: inline;
+}
+
+nav.authentication
+{
+    display: inline-block;
+}
+
+nav.authentication ul li
+{
+    list-style: none;
+    display: inline;
+}
+
+#content
+{
+    width: 800px;
+    text-align: center;
+    margin: 10px auto 10px auto;
+    padding: 10px 10px 10px 10px;
+    background-color: #FFFAE4;
+    -webkit-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
 }

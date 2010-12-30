@@ -3,11 +3,11 @@ from google.appengine.api import users
 from google.appengine.api import memcache
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp import util
-from prune.utils.template_utils import render_template
+from prune.utils.page_utils import render_template
+from prune.utils.page_utils import show_error_page
 from prune.utils.url_utils import *
 from prune.trim.resolver import Resolver
 from prune.trim.trimmer import Trimmer
-from prune.trim.namegenerator import NameGenerator
 from prune.models.db import PrunUser
 from prune.models.request_logger import RequestLogger
 from prune.utils.constants import RequestResult
@@ -71,12 +71,8 @@ class IndexHandler(webapp.RequestHandler):
 
             self.redirect(resolved_url)
         else:
-            self.show_error_page("The requested page was not found", '404: /{0} not found'.format(request_path))
-
-    def show_error_page(self, error_message, log_message):
-        self.logger.log(None, None, None, RequestResult.ERROR, log_message)
-        self.error(404) # Send a HTTP Not Found
-        self.response.out.write(render_template("error.html", {"message": error_message}))
+            self.logger.log(None, None, None, RequestResult.ERROR, '404: /{0} not found'.format(request_path))
+            show_error_page(self, 404, "The requested page was not found")
 
     def resolver_for(self, request_path):
         resolver_memcache_key = 'Resolver_' + request_path

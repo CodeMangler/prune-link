@@ -5,10 +5,10 @@ from prune.models.db import PrunUser
 
 __author__ = 'CodeMangler'
 
-class StatsHandler(webapp.RequestHandler):
+class LinkStatsHandler(webapp.RequestHandler):
     def get(self):
         self.initialize_members()
-        self.response.out.write('User Stats')
+        self.response.out.write('View link stats')
 
     def initialize_members(self):
         self.user = users.get_current_user()
@@ -20,7 +20,7 @@ class StatsHandler(webapp.RequestHandler):
         }
 
 def main():
-    application = webapp.WSGIApplication([('/stats.*', StatsHandler)], debug=True)
+    application = webapp.WSGIApplication([('/stats/.*', LinkStatsHandler)], debug=True)
     util.run_wsgi_app(application)
 
 if __name__ == '__main__':

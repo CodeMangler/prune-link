@@ -1,0 +1,31 @@
+{% extends "master.html" %}
+
+{% block content %}
+{% if user_profile %}
+<div>
+    <a href="/profile/edit">Edit Profile</a>
+    <img id="profile-pic" src="{{ user_profile.picture_url }}"  alt="Profile Picture from Gravatar"/>
+
+    {% if user_profile.display_name %}
+    {{ user_profile.display_name }}
+    {% endif %}
+
+    {% if user_profile.about %}
+    About: {{ user_profile.about }}
+    {% endif %}
+
+    {% if user_profile.websites %}
+    Websites:
+    <ul>
+    {% for website in user_profile.websites %}
+        <li><a href="{{ website }}">{{ website }}</a></li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+
+    {% if user_profile.twitter %}
+        Twitter URL
+    {% endif %}
+</div>
+{% endif %}
+{% endblock %}

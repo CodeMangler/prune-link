@@ -22,14 +22,20 @@ handlers:
   script: /prune/tasks/stats.py
   login: admin
 
-- url: /stats/.*
+- url: /stats(/?)
   script: /prune/handlers/stats.py
 
-- url: /profile/.*
+- url: /stats/.*
+  script: /prune/handlers/link_stats.py
+
+- url: /profile/edit(/?)
+  script: /prune/handlers/edit_profile.py
+
+- url: /profile.*
   script: /prune/handlers/profile.py
 
 - url: .*
-  script: /prune/main.py
+  script: /prune/handlers/index.py
 
 skip_files:
 - ^(.*/)?app\.yaml
