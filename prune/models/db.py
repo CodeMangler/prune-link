@@ -23,9 +23,22 @@ class Link(db.Model):
 
         return link
 
+    @staticmethod
+    def find_by_url(url):
+        memcache_key = 'Link_' + url
+        link = memcache.get(memcache_key)
+        if not link:
+            results = db.GqlQuery('SELECT * FROM Link WHERE url = :1', url).fetch(1)
+            link = results[0] if results else None
+            if link:
+                memcache.set(memcache_key, link) # Could do db.model_to_protobuff(link), but is it worth it?
+
+        return link
+
 class AggregateLink(db.Model):
     aggregate_url = db.StringProperty()
     url = db.StringProperty()
+    title = db.StringProperty()
     created_on = db.DateTimeProperty(auto_now_add=True)
     modified_on = db.DateTimeProperty(auto_now=True)
 
@@ -166,6 +179,10 @@ class UserLink(db.Model):
     created_on = db.DateTimeProperty(auto_now_add=True)
     modified_on = db.DateTimeProperty(auto_now=True)
 
+    @classmethod
+    def for_user(cls, prun_user, page=0, records_per_page=10):
+        return db.GqlQuery('SELECT * FROM UserLink WHERE prun_user_id = :1', prun_user.id()).fetch(limit=records_per_page, offset=(page * records_per_page))
+
     @staticmethod
     def find_by_url(url, prun_user_id):
         memcache_key = 'UserLink_' + str(prun_user_id) + '_' + url
@@ -238,6 +255,10 @@ class RequestStatistic(): # Base class for all request data statistics
         if result is None:
             result = cls.create(values)
         return result
+
+    @classmethod
+    def find_by_short_url(cls, short_url):
+        return cls.find_one({'short_url': short_url})
 
 # TODO: Find a way to propagate class variables to remove duplication of short_url and count across all 'RequestStatistic's
 class RequestCount(RequestStatistic, db.Model):

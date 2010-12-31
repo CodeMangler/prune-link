@@ -1,5 +1,20 @@
 {% extends "master.html" %}
 
 {% block content %}
-        All Stats
+<table>
+    <tr>
+        <th>Link</th>
+        <th>Clicks</th>
+        <th>Stats</th>
+        <th>Date</th>
+    </tr>
+    {% for link_stat in user_link_stats %}
+        <tr>
+           <td>{{ link_stat.click_count }} out of {{ link_stat.total_click_count }}</td>
+           <td><a href="{{ link_stat.url }}">{{ link_stat.title }}</a> <a href="{{ link_stat.url }}">{{ link_stat.url }}</a></td>
+           <td><a href="/stats/{{ link_stat.short_url }}">Stats</a></td>
+           <td>{{ link_stat.creation_date }}</td>
+        </tr>
+    {% endfor %}
+</table>
 {% endblock %}

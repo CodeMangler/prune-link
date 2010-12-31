@@ -37,7 +37,6 @@ class IndexHandler(webapp.RequestHandler):
         self.logger = RequestLogger(self.request.url, request_method, str(self.request.headers), self.request.remote_addr, os.getenv('HTTP_REFERER'), self.user)
         self.template_parameters = {
             "user": self.user,
-            "user-id": PrunUser.find_or_create(self.user).key().id() if self.user else None,
             "login_url": users.create_login_url(self.request.path),
             "logout_url": users.create_logout_url(self.request.path)
         }
@@ -73,6 +72,7 @@ class IndexHandler(webapp.RequestHandler):
         else:
             self.logger.log(None, None, None, RequestResult.ERROR, '404: /{0} not found'.format(request_path))
             show_error_page(self, 404, "The requested page was not found")
+            return
 
     def resolver_for(self, request_path):
         resolver_memcache_key = 'Resolver_' + request_path

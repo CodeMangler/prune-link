@@ -21,6 +21,7 @@ class EditProfileHandler(webapp.RequestHandler):
         self.user = users.get_current_user()
         if not self.user:
             show_error_page(self, 400, 'You have to be logged-in to edit your profile.')
+            return
 
         self.initialize_fields(self.user)
         display_name = self.request.get('display-name')

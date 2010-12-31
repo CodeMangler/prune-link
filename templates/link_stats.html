@@ -1,5 +1,24 @@
 {% extends "master.html" %}
 
 {% block content %}
-        Stats for a particular link
+{% if link_stats %}
+        <div>
+            Link details:
+            Link Title
+            Number of Clicks
+            Total number of clicks
+            Link to aggregate stats
+        </div>
+        <div>
+            Charts:
+
+            Clicks (Day/Time[Depending on recency] vs Clicks)
+            Referrers (Referrer type vs count)
+            Locations (Country vs count OR World map plotting locations and a tooltip showing counts)
+            Browser type (Browser type vs count)
+            OS (OS vs count)
+        </div>
+{% else %}
+        Invalid link
+{% endif %}
 {% endblock %}
