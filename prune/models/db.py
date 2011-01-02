@@ -228,15 +228,25 @@ class RequestStatistic(): # Base class for all request data statistics
             self.count = 1
 
     @classmethod
-    def find_one(cls, filters):
+    def find(cls, filters, order_by=[], limit=100):
         query = cls.all() # Expected to call db.Model.all(), since it should only be called on a db.Model
 
-        for filter in filters:
-            filter_value = filters[filter]
-            if filter_value:
-                query.filter(filter + ' =', filter_value)
+        if filters:
+            for filter in filters:
+                filter_value = filters[filter]
+                if filter_value:
+                    query.filter(filter + ' =', filter_value)
 
-        results = query.fetch(1)
+        if order_by:
+            for sort_property in order_by:
+                if sort_property:
+                    query.order(sort_property)
+
+        return query.fetch(limit)
+
+    @classmethod
+    def find_one(cls, filters):
+        results = cls.find(filters, [], 1)
 
         if len(results) == 1: # Expecting exactly one match, if present..
             return results[0]
@@ -257,8 +267,12 @@ class RequestStatistic(): # Base class for all request data statistics
         return result
 
     @classmethod
-    def find_by_short_url(cls, short_url):
+    def find_one_by_short_url(cls, short_url):
         return cls.find_one({'short_url': short_url})
+
+    @classmethod
+    def find_by_short_url(cls, short_url, order_by=[]):
+        return cls.find({'short_url': short_url}, order_by)
 
 # TODO: Find a way to propagate class variables to remove duplication of short_url and count across all 'RequestStatistic's
 class RequestCount(RequestStatistic, db.Model):

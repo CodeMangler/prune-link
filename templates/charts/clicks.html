@@ -1,0 +1,21 @@
+<div id="clicks_{{ link_stats.short_url }}">
+</div>
+<script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawClicks_{{ link_stats.short_url }});
+      function drawClicks_{{ link_stats.short_url }}() {
+        var data = new google.visualization.DataTable();
+        data.addColumn("date", "Date");
+        data.addColumn("number", "Clicks");
+
+        {% for item in link_stats.clicks.items %}
+        data.addRow([new Date('{{ item.0 }}'), {{ item.1 }}]);
+        {% endfor %}
+        data.sort([{column: 0}]);
+
+        var chart = new google.visualization.ColumnChart(document.getElementById('clicks_{{ link_stats.short_url }}'));
+        chart.draw(data, {width: 400, height: 240, title: 'Clicks',
+                          hAxis: {title: 'Date'} });
+      }
+</script>
+

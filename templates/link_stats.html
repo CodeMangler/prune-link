@@ -1,22 +1,23 @@
 {% extends "master.html" %}
 
+{% block page_scripts %}
+<!--Load the AJAX API-->
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+{% endblock %}
+
 {% block content %}
 {% if link_stats %}
         <div>
-            Link details:
-            Link Title
-            Number of Clicks
-            Total number of clicks
-            Link to aggregate stats
+            <h1>{{ link_stats.title }}</h1>
+            {{ link_stats.click_count }} out of {{ link_stats.total_click_count }}
+            <a href="/stats/{{link_stats.aggregate_url}}">Aggregate Stats</a>
         </div>
         <div>
-            Charts:
-
-            Clicks (Day/Time[Depending on recency] vs Clicks)
-            Referrers (Referrer type vs count)
-            Locations (Country vs count OR World map plotting locations and a tooltip showing counts)
-            Browser type (Browser type vs count)
-            OS (OS vs count)
+            {% include "charts/clicks.html" %}
+            {% include "charts/referrers.html" %}
+            {% include "charts/locations_map.html" %}
+            {% include "charts/browsers.html" %}
+            {% include "charts/operating_systems.html" %}
         </div>
 {% else %}
         Invalid link

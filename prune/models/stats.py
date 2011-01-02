@@ -65,18 +65,18 @@ class LinkStats:
             return None
 
     def gather_click_stats(self):
-        request_count = RequestCount.find_by_short_url(self.short_url)
+        request_count = RequestCount.find_one_by_short_url(self.short_url)
         if request_count:
             self.click_count = request_count.count
 
         if not self.is_aggregate:
-            aggregate_count = RequestCount.find_by_short_url(self.aggregate_url)
+            aggregate_count = RequestCount.find_one_by_short_url(self.aggregate_url)
             if aggregate_count:
                 self.total_click_count = aggregate_count.count
         else:
             self.total_click_count = self.click_count
 
-        request_dates = RequestDate.find_by_short_url(self.short_url)
+        request_dates = RequestDate.find_by_short_url(self.short_url, order_by=['date'])
         if request_dates:
             for request_date in request_dates:
                 self.clicks[request_date.date] = request_date.count
