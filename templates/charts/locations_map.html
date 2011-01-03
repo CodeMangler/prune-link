@@ -1,1 +1,18 @@
-Locations (Country vs count OR World map plotting locations and a tooltip showing counts)
+<div id="countries_{{ link_stats.short_url }}">
+</div>
+<script type="text/javascript">
+      google.load("visualization", "1", {packages:["geomap"]});
+      google.setOnLoadCallback(drawOperatingSystems_{{ link_stats.short_url }});
+      function drawOperatingSystems_{{ link_stats.short_url }}() {
+        var data = new google.visualization.DataTable();
+        data.addColumn("string", "Country");
+        data.addColumn("number", "Clicks");
+
+        {% for item in link_stats.countries.items %}
+        data.addRow(['{{ item.0 }}', {{ item.1 }}]);
+        {% endfor %}
+
+        var chart = new google.visualization.GeoMap(document.getElementById('countries_{{ link_stats.short_url }}'));
+        chart.draw(data, {width: 400, height: 240, title: 'Locations', drawMode: 'regions'});
+      }
+</script>

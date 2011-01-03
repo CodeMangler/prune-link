@@ -1,6 +1,7 @@
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp import util
 from google.appengine.api import users
+from prune.utils.utils import *
 from prune.utils.page_utils import *
 from prune.utils.url_utils import *
 from prune.models.db import PrunUser
@@ -14,7 +15,7 @@ class ProfileHandler(webapp.RequestHandler):
         self.prun_user = None
 
         request_path = path(self.request).lower().replace('profile', '').strip('/')
-        if not self.is_empty(request_path):
+        if not is_empty(request_path):
             self.prun_user = PrunUser.find_by_id(long(request_path))
             if not self.prun_user:
                 show_error_page(self, 404, 'No such user')
@@ -35,9 +36,6 @@ class ProfileHandler(webapp.RequestHandler):
         }
 
         self.response.out.write(render_template("profile.html", self.template_parameters))
-
-    def is_empty(self, text):
-        return text is None or text == ''
 
 def main():
     application = webapp.WSGIApplication([('/profile.*', ProfileHandler)], debug=True)

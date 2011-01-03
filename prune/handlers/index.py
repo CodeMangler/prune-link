@@ -8,8 +8,8 @@ from prune.utils.page_utils import show_error_page
 from prune.utils.url_utils import *
 from prune.trim.resolver import Resolver
 from prune.trim.trimmer import Trimmer
-from prune.models.db import PrunUser
 from prune.models.request_logger import RequestLogger
+from prune.utils.utils import *
 from prune.utils.constants import RequestResult
 
 import os
@@ -54,7 +54,7 @@ class IndexHandler(webapp.RequestHandler):
         self.response.out.write(render_template("index.html", self.template_parameters))
 
     def resolve(self, request_path, user):
-        if self.is_empty(request_path):
+        if is_empty(request_path):
             self.response.out.write(render_template("index.html", self.template_parameters))
             return
 
@@ -83,9 +83,6 @@ class IndexHandler(webapp.RequestHandler):
             memcache.set(resolver_memcache_key, resolver)
 
         return resolver
-
-    def is_empty(self, text):
-        return text is None or text == ''
 
 def main():
     application = webapp.WSGIApplication([('/.*', IndexHandler)], debug=True)

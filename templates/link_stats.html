@@ -13,11 +13,11 @@
             <a href="/stats/{{link_stats.aggregate_url}}">Aggregate Stats</a>
         </div>
         <div>
-            {% include "charts/clicks.html" %}
-            {% include "charts/referrers.html" %}
-            {% include "charts/locations_map.html" %}
-            {% include "charts/browsers.html" %}
-            {% include "charts/operating_systems.html" %}
+            <div>{% include "charts/clicks.html" %}</div>
+            <div>{% include "charts/referrers.html" %}</div>
+            <div>{% include "charts/locations_map.html" %}</div>
+            <div>{% include "charts/browsers.html" %}</div>
+            <div>{% include "charts/operating_systems.html" %}</div>
         </div>
 {% else %}
         Invalid link

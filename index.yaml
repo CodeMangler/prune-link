@@ -20,3 +20,23 @@ indexes:
   - name: short_url
   - name: date
     direction: desc
+
+- kind: RequestLocation
+  properties:
+  - name: short_url
+  - name: date
+
+- kind: RequestOperatingSystem
+  properties:
+  - name: short_url
+  - name: date
+
+- kind: RequestReferrer
+  properties:
+  - name: short_url
+  - name: date
+
+- kind: RequestUserAgent
+  properties:
+  - name: short_url
+  - name: date

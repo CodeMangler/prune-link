@@ -1,1 +1,18 @@
-Browser type (Browser type vs count)
+<div id="browsers_{{ link_stats.short_url }}">
+</div>
+<script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawBrowsers_{{ link_stats.short_url }});
+      function drawBrowsers_{{ link_stats.short_url }}() {
+        var data = new google.visualization.DataTable();
+        data.addColumn("string", "Browser");
+        data.addColumn("number", "Clicks");
+
+        {% for item in link_stats.browsers.items %}
+        data.addRow(['{{ item.0 }}', {{ item.1 }}]);
+        {% endfor %}
+
+        var chart = new google.visualization.PieChart(document.getElementById('browsers_{{ link_stats.short_url }}'));
+        chart.draw(data, {width: 400, height: 240, title: 'Browsers'});
+      }
+</script>

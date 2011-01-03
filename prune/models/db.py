@@ -283,14 +283,15 @@ class RequestCount(RequestStatistic, db.Model):
 
 class RequestDate(RequestStatistic, db.Model):
     short_url = db.StringProperty() # Short/Aggregate URL
-    date = db.DateProperty() # App Engine is always 'UTC' btw..
     count = db.IntegerProperty(default=0)
+    date = db.DateProperty() # App Engine is always 'UTC' btw..
     created_on = db.DateTimeProperty(auto_now_add=True)
     modified_on = db.DateTimeProperty(auto_now=True)
 
 class RequestIp(RequestStatistic, db.Model):
     short_url = db.StringProperty() # Short/Aggregate URL
     count = db.IntegerProperty(default=0)
+    date = db.DateProperty()
     ip = db.StringProperty()
     created_on = db.DateTimeProperty(auto_now_add=True)
     modified_on = db.DateTimeProperty(auto_now=True)
@@ -298,13 +299,16 @@ class RequestIp(RequestStatistic, db.Model):
 class RequestReferrer(RequestStatistic, db.Model):
     short_url = db.StringProperty() # Short/Aggregate URL
     count = db.IntegerProperty(default=0)
+    date = db.DateProperty()
     referrer = db.StringProperty()
+    referrer_url = db.StringProperty()
     created_on = db.DateTimeProperty(auto_now_add=True)
     modified_on = db.DateTimeProperty(auto_now=True)
 
 class RequestUserAgentString(RequestStatistic, db.Model):
     short_url = db.StringProperty() # Short/Aggregate URL
     count = db.IntegerProperty(default=0)
+    date = db.DateProperty()
     user_agent_string = db.StringProperty()
     created_on = db.DateTimeProperty(auto_now_add=True)
     modified_on = db.DateTimeProperty(auto_now=True)
@@ -312,6 +316,7 @@ class RequestUserAgentString(RequestStatistic, db.Model):
 class RequestUserAgent(RequestStatistic, db.Model):
     short_url = db.StringProperty() # Short/Aggregate URL
     count = db.IntegerProperty(default=0)
+    date = db.DateProperty()
     user_agent = db.StringProperty()
     version = db.StringProperty()
     language = db.StringProperty()
@@ -321,6 +326,7 @@ class RequestUserAgent(RequestStatistic, db.Model):
 class RequestOperatingSystem(RequestStatistic, db.Model):
     short_url = db.StringProperty() # Short/Aggregate URL
     count = db.IntegerProperty(default=0)
+    date = db.DateProperty()
     operating_system = db.StringProperty()
     version = db.StringProperty()
     kernel_version = db.StringProperty()
@@ -332,6 +338,7 @@ class RequestOperatingSystem(RequestStatistic, db.Model):
 class RequestLocation(RequestStatistic, db.Model):
     short_url = db.StringProperty() # Short/Aggregate URL
     count = db.IntegerProperty(default=0)
+    date = db.DateProperty()
     location = db.GeoPtProperty()
     city = db.StringProperty()
     state = db.StringProperty()

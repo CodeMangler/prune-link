@@ -14,6 +14,7 @@ from prune.models.db import RequestUserAgent
 from prune.models.db import RequestOperatingSystem
 from prune.models.db import RequestLocation
 from prune.analytics.httpheader import HeaderParser
+from prune.analytics.referrer import ReferrerAnalyzer
 from prune.analytics.useragent.useragentstring_com import UserAgentParser
 from prune.analytics.geolocation.iponfodb import GeoLocator
 
@@ -64,13 +65,14 @@ class StatsWorker(webapp.RequestHandler):
             request_data.referrer = headers.get('Referer') # .get(...) instead of [...] to avoid KeyError
             request_data.put()
 
-        if request_data.referrer:
-            request_referrer = RequestReferrer.find_or_create({'short_url': short_url, 'referrer': request_data.referrer})
-            request_referrer.increment()
-            request_referrer.put()
+        referrer_url = request_data.referrer if request_data.referrer else ''
+        request_referrer = RequestReferrer.find_or_create({'short_url': short_url, 'date': db.DateProperty().now(),
+                                                           'referrer': ReferrerAnalyzer.referrer_type(referrer_url), 'referrer_url': referrer_url})
+        request_referrer.increment()
+        request_referrer.put()
 
     def update_request_ip(self, short_url, request_data):
-        request_ip = RequestIp.find_or_create({'short_url': short_url, 'ip': request_data.request_address})
+        request_ip = RequestIp.find_or_create({'short_url': short_url, 'date': db.DateProperty().now(), 'ip': request_data.request_address})
         request_ip.increment()
         request_ip.put()
 
@@ -79,7 +81,7 @@ class StatsWorker(webapp.RequestHandler):
 
         if user_agent_string:
             # Store Request User Agent String
-            request_user_agent_string = RequestUserAgentString.find_or_create({'short_url': short_url, 'user_agent_string': user_agent_string})
+            request_user_agent_string = RequestUserAgentString.find_or_create({'short_url': short_url, 'date': db.DateProperty().now(), 'user_agent_string': user_agent_string})
             request_user_agent_string.increment()
             request_user_agent_string.put()
 
@@ -96,11 +98,11 @@ class StatsWorker(webapp.RequestHandler):
             os_variant = parser.os_variant
 
             # Store actual user agent and OS and update their counts
-            request_user_agent = RequestUserAgent.find_or_create({'short_url': short_url, 'user_agent': user_agent, 'version': agent_version, 'language': language})
+            request_user_agent = RequestUserAgent.find_or_create({'short_url': short_url, 'date': db.DateProperty().now(), 'user_agent': user_agent, 'version': agent_version, 'language': language})
             request_user_agent.increment()
             request_user_agent.put()
 
-            request_operating_system = RequestOperatingSystem.find_or_create({'short_url': short_url, 'operating_system': operating_system,
+            request_operating_system = RequestOperatingSystem.find_or_create({'short_url': short_url, 'date': db.DateProperty().now(), 'operating_system': operating_system,
                                                                               'version': os_version, 'kernel_version': kernel_version,
                                                                               'variant': os_variant, 'language': language})
             request_operating_system.increment()
@@ -114,7 +116,7 @@ class StatsWorker(webapp.RequestHandler):
         longitude = locator.longitude
         if latitude and longitude:
             location = GeoPt(latitude, longitude)
-            request_location = RequestLocation.find_or_create({'short_url': short_url, 'location': location,
+            request_location = RequestLocation.find_or_create({'short_url': short_url, 'date': db.DateProperty().now(), 'location': location,
                                                                'city': locator.city, 'state': locator.state,
                                                                'country': locator.country, 'zip_postal_code': locator.zip_postal_code})
             request_location.increment()

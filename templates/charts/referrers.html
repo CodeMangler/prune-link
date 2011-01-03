@@ -1,1 +1,25 @@
-Referrers (Referrer type vs count)
+<div id="referrers_{{ link_stats.short_url }}">
+</div>
+<script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawReferrers_{{ link_stats.short_url }});
+      function drawReferrers_{{ link_stats.short_url }}() {
+        var data = new google.visualization.DataTable();
+        data.addColumn("date", "Date");
+        data.addColumn("number", "Direct");
+        data.addColumn("number", "Google");
+        data.addColumn("number", "Bing");
+        data.addColumn("number", "Yahoo!");
+        data.addColumn("number", "Twitter");
+        data.addColumn("number", "Facebook");
+        data.addColumn("number", "Other");
+
+        {% for item in link_stats.referrers.items %}
+        data.addRow([new Date('{{ item.0 }}'), {{ item.1.direct }}, {{ item.1.google }}, {{ item.1.bing }}, {{ item.1.yahoo }}, {{ item.1.twitter }}, {{ item.1.facebook }}, {{ item.1.other }}]);
+        {% endfor %}
+        data.sort([{column: 0}]);
+
+        var chart = new google.visualization.ColumnChart(document.getElementById('referrers_{{ link_stats.short_url }}'));
+        chart.draw(data, {width: 400, height: 240, title: 'Referrers', hAxis: {title: 'Date'} });
+      }
+</script>

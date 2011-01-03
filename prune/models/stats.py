@@ -1,4 +1,5 @@
 from prune.models.db import *
+from prune.analytics.referrer import *
 
 __author__ = 'CodeMangler'
 
@@ -10,22 +11,9 @@ def gather_stats(prun_user):
     return filter_value([LinkStats.gather_for(user_link.short_url) for user_link in user_links], None)
 
 class LinkStats:
-    short_url = None # Short/Aggregate URL..
-    aggregate_url = None
-    url = ''
-    title = ''
-    is_aggregate = False
-    click_count = 0
-    total_click_count = 0
-    clicks = {} # Timestamp vs Count
-    referrers = {} # Referrer vs Count
-    browsers = {}
-    operating_systems = {}
-    countries = {} # Country vs Count
-    cities = {}
-    is_valid = False
-
     def __init__(self, short_url):
+        self.initialize_fields()
+
         self.short_url = short_url
         link = Link.find_by_short_url(short_url)
         if link:
@@ -44,6 +32,22 @@ class LinkStats:
                 self.is_valid = True
             else: # Just being explicit..
                 self.is_valid = False
+
+    def initialize_fields(self):
+        self.short_url = None # Short/Aggregate URL..
+        self.aggregate_url = None
+        self.url = ''
+        self.title = ''
+        self.is_aggregate = False
+        self.click_count = 0
+        self.total_click_count = 0
+        self.clicks = {} # Timestamp vs Count
+        self.referrers = {} # Referrer vs Count
+        self.browsers = {}
+        self.operating_systems = {}
+        self.countries = {} # Country vs Count
+        self.cities = {}
+        self.is_valid = False
 
     def find_title(self, url):
         link = Link.find_by_url(url)
@@ -82,14 +86,30 @@ class LinkStats:
                 self.clicks[request_date.date] = request_date.count
 
     def gather_referrer_stats(self):
-        request_referrers = RequestReferrer.find_by_short_url(self.short_url)
+        request_referrers = RequestReferrer.find_by_short_url(self.short_url, order_by=['date'])
         if request_referrers:
             for request_referrer in request_referrers:
-                self.referrers[request_referrer.referrer] = request_referrer.count
-        # TODO: Further analysis? Like, identify popular sources: EMail, Twitter, Facebook, Desktop Clients, Mobile Clients etc..?
+                referrer = self.referrers[request_referrer.date] if self.referrers.has_key(request_referrer.date) else ReferrerStat(request_referrer.date)
+
+                if request_referrer.referrer == ReferrerTypes.GOOGLE:
+                    referrer.google += request_referrer.count
+                elif request_referrer.referrer == ReferrerTypes.BING:
+                    referrer.bing += request_referrer.count
+                elif request_referrer.referrer == ReferrerTypes.YAHOO:
+                    referrer.yahoo += request_referrer.count
+                elif request_referrer.referrer == ReferrerTypes.TWITTER:
+                    referrer.twitter += request_referrer.count
+                elif request_referrer.referrer == ReferrerTypes.FACEBOOK:
+                    referrer.facebook += request_referrer.count
+                elif request_referrer.referrer == ReferrerTypes.DIRECT:
+                    referrer.direct += request_referrer.count
+                else:
+                    referrer.other += request_referrer.count
+
+                self.referrers[request_referrer.date] = referrer
 
     def gather_browser_stats(self):
-        request_user_agents = RequestUserAgent.find_by_short_url(self.short_url)
+        request_user_agents = RequestUserAgent.find_by_short_url(self.short_url, order_by=['date'])
         if request_user_agents:
             for request_user_agent in request_user_agents:
                 browser = request_user_agent.user_agent
@@ -98,7 +118,7 @@ class LinkStats:
                 self.browsers[browser] += request_user_agent.count
 
     def gather_os_stats(self):
-        request_operating_systems = RequestOperatingSystem.find_by_short_url(self.short_url)
+        request_operating_systems = RequestOperatingSystem.find_by_short_url(self.short_url, order_by=['date'])
         if request_operating_systems:
             for request_operating_system in request_operating_systems:
                 os = request_operating_system.operating_system
@@ -107,7 +127,7 @@ class LinkStats:
                 self.operating_systems[os] += request_operating_system.count
 
     def gather_location_stats(self):
-        request_locations = RequestLocation.find_by_short_url(self.short_url)
+        request_locations = RequestLocation.find_by_short_url(self.short_url, order_by=['date'])
         if request_locations:
             for request_location in request_locations:
                 city = request_location.city
@@ -121,3 +141,14 @@ class LinkStats:
 
                 self.cities[city_country] += request_location.count
                 self.countries[country] += request_location.count
+
+class ReferrerStat:
+    def __init__(self, date):
+        self.direct = 0
+        self.google = 0
+        self.bing = 0
+        self.yahoo = 0
+        self.twitter = 0
+        self.facebook = 0
+        self.other = 0
+        self.date = date

@@ -1,4 +1,5 @@
 from prune.models.db import Link, AggregateLink
+from prune.utils.utils import *
 
 __author__ = 'CodeMangler'
 
@@ -11,7 +12,7 @@ class Resolver:
         self.resolution_result = None
 
     def resolve(self):
-        if self.is_empty(self.path):
+        if is_empty(self.path):
             return None
 
         link = Link.find_by_short_url(self.path)
@@ -35,6 +36,3 @@ class Resolver:
 
     def is_resolvable(self):
         return self.resolvable
-
-    def is_empty(self, text):
-        return text is None or text == ''

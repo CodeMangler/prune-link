@@ -1,1 +1,18 @@
-OS (OS vs count)
+<div id="operating_systems_{{ link_stats.short_url }}">
+</div>
+<script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawOperatingSystems_{{ link_stats.short_url }});
+      function drawOperatingSystems_{{ link_stats.short_url }}() {
+        var data = new google.visualization.DataTable();
+        data.addColumn("string", "Operating System");
+        data.addColumn("number", "Clicks");
+
+        {% for item in link_stats.operating_systems.items %}
+        data.addRow(['{{ item.0 }}', {{ item.1 }}]);
+        {% endfor %}
+
+        var chart = new google.visualization.PieChart(document.getElementById('operating_systems_{{ link_stats.short_url }}'));
+        chart.draw(data, {width: 400, height: 240, title: 'Operating Systems'});
+      }
+</script>
