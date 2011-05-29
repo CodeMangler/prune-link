@@ -1,7 +1,6 @@
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp import util
 from google.appengine.api import users
-from prune.models.db import PrunUser
 from prune.models.stats import *
 from prune.utils.page_utils import *
 
@@ -11,7 +10,8 @@ class StatsHandler(webapp.RequestHandler):
     def get(self):
         self.user = users.get_current_user()
         if not self.user:
-            show_error_page(self, 400, 'You have to be logged-in to view your link statistics.')
+            #show_error_page(self, 400, 'You have to be logged-in to view your link statistics.')
+            self.redirect(users.create_login_url(self.request.path))
             return
 
         self.initialize_members(self.user)
@@ -24,7 +24,7 @@ class StatsHandler(webapp.RequestHandler):
             "user": user,
             "user_link_stats": self.user_link_stats,
             "login_url": users.create_login_url(self.request.path),
-            "logout_url": users.create_logout_url(self.request.path)
+            "logout_url": users.create_logout_url('/')
         }
 
 def main():

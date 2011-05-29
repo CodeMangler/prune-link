@@ -1,6 +1,6 @@
 body
 {
-    background-color: #FFCC66;
+    background-color: #FFF8E3;
     font-size: .75em;
     font-family: Verdana, Helvetica, Sans-Serif;
     padding: 0;
@@ -17,14 +17,20 @@ header
 
 footer
 {
-	padding: 10px 0 0 10px;
-	border-top: thin black solid;
-	background-color: black;
-	color: white;
-    margin: auto;
+	padding: 0px 0 0 10px;
+	border-top: thin #4671D5 solid;
+    margin: 0 auto;
     text-align: center;
 	height: 50px;
-    width: 100%;
+    width: 700px;
+}
+
+footer p
+{
+    text-align: left;
+    float: left;
+    font-size: 8px;
+    display: inline;
 }
 
 #page
@@ -44,8 +50,8 @@ footer
 
 #top-bar
 {
-    height: 5px;
-    background-color: black;
+    height: 10px;
+    background-color: #001D7F;
 }
 
 #logo
@@ -55,7 +61,7 @@ footer
     font-family: Papyrus, Verdana, Helvetica, Sans-Serif;
     font-weight: bold;
     color: white;
-    background-color: black;
+    background-color: #001D7F;
     padding-left: 2px;
     padding-right: 2px;
 }
@@ -70,6 +76,13 @@ footer
 nav.primary
 {
     display: inline-block;
+    text-align: right;
+}
+
+nav.primary ul
+{
+    margin: 2px;
+    padding: 0;
 }
 
 nav.primary ul li
@@ -81,12 +94,47 @@ nav.primary ul li
 nav.authentication
 {
     display: inline-block;
+    text-align: left;
+}
+
+nav.authentication ul
+{
+    margin: 2px;
+    padding: 0;
 }
 
 nav.authentication ul li
 {
     list-style: none;
     display: inline;
+}
+
+nav.footer
+{
+    display: inline-block;
+    float: right;
+    padding: 0;
+    margin: 0;
+    font-size: 10px;
+}
+
+nav.footer ul li
+{
+    list-style: none;
+    display: inline;
+    padding: 0;
+    margin: 0;
+}
+
+form {
+    display: inline-block;
+    width: 100%;
+}
+
+form > * {
+    float: left;
+    display: inline;
+    width: 100px;
 }
 
 #content
@@ -99,4 +147,31 @@ nav.authentication ul li
     -webkit-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
     -moz-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+#prune-form {
+    display: inline-block;
+    width: 90%;
+}
+
+#long-url {
+    width: 100%;
+    height: 150px;
+}
+
+#shorten {
+    display: inline;
+    float: right;
+}
+
+#short-link {
+    text-align: left;
+}
+
+#short-link > h2 {
+    display: inline;
+}
+
+#copy-button {
+    display: inline;
 }

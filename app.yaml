@@ -14,6 +14,9 @@ handlers:
 - url: /scripts
   static_dir: scripts
 
+- url: /flash
+  static_dir: flash
+
 - url: /task/linkinfo
   script: /prune/tasks/linkinfo.py
   login: admin

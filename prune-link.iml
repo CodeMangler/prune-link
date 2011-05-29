@@ -18,6 +18,7 @@
       <sourceFolder url="file://$MODULE_DIR$/stylesheets" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/templates" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/flash" isTestSource="false" />
     </content>
     <orderEntry type="jdk" jdkName="Python 2.6.4 (C:/Python26/python.exe)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />

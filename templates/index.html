@@ -1,12 +1,26 @@
 {% extends "master.html" %}
 
 {% block content %}
+<div id="prune-form">
 <form action="/" method="post">
-    <input name="long-url" id="long-url" type="text" />
-    <label for="custom-short-url">Custom Short URL:</label><input name="custom-short-url" id="custom-short-url" type="text" />
-    <input type="submit" value="Shorten"/>
+    <textarea name="long-url" id="long-url"></textarea><br/>
+<!--
+    <label for="custom-short-url">Custom Short URL:</label>
+    <input name="custom-short-url" id="custom-short-url" type="text" />
+-->
+    <input id="shorten" type="submit" value="Shorten"/>
 </form>
 {% if short_url %}
-        <p>Shortened URL: http://prun.in/{{ short_url }} (and links to other stats etc..) </p>
+        <div id="short-link">
+            <script type="text/javascript" src="/scripts/ZeroClipboard.js"></script>
+            <h2>Shortened Link:</h2> <label>http://prun.in/{{ short_url }}</label> <div id="copy-button">Copy</div>
+            <script type="text/javascript">
+                ZeroClipboard.setMoviePath('/flash/ZeroClipboard.swf');
+                var clip = new ZeroClipboard.Client();
+                clip.setText("http://prun.in/{{ short_url }}");
+                clip.glue('copy-button');
+            </script>
+        </div>
 {% endif %}
+</div>
 {% endblock %}
