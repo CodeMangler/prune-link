@@ -10,3 +10,4 @@
 *.lock
 *idea*/*
 *.pyc
+\.sass-cache/*

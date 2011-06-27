@@ -3,12 +3,14 @@
 {% block content %}
 <div id="prune-form">
 <form action="/" method="post">
-    <textarea name="long-url" id="long-url"></textarea><br/>
-<!--
-    <label for="custom-short-url">Custom Short URL:</label>
-    <input name="custom-short-url" id="custom-short-url" type="text" />
--->
-    <input id="shorten" type="submit" value="Shorten"/>
+    <div id="main-url-container">
+        <textarea name="long-url" id="long-url"></textarea><br/>
+    <!--
+        <label for="custom-short-url">Custom Short URL:</label>
+        <input name="custom-short-url" id="custom-short-url" type="text" />
+    -->
+        <input id="shorten" name="shorten" type="submit" value="Shorten"/>
+    </div>
 </form>
 {% if short_url %}
         <div id="short-link">
@@ -22,5 +24,11 @@
             </script>
         </div>
 {% endif %}
+
+    <script>
+        $(document).ready(function() {
+            $("#shorten").button();
+        });
+    </script>
 </div>
 {% endblock %}

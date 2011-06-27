@@ -1,0 +1,184 @@
+@import "compass/reset";
+
+body
+{
+    background-color: #FFF8E3;
+    font-size: .75em;
+    font-family: Verdana, Helvetica, Sans-Serif;
+    padding: 0;
+    margin: 0;
+    color: #696969;
+}
+
+header
+{
+	margin: 0;
+	padding: 0;
+    width: 100%;
+}
+
+footer
+{
+	padding: 0px 0 0 10px;
+	border-top: thin #4671D5 solid;
+    margin: 0 auto;
+    text-align: center;
+	height: 50px;
+    width: 700px;
+}
+
+footer p
+{
+    text-align: left;
+    float: left;
+    font-size: 8px;
+    display: inline;
+}
+
+#page
+{
+    width: 100%;
+}
+
+.error
+{
+    color: red;
+}
+
+.message
+{
+    border: black solid 1px;
+}
+
+#top-bar
+{
+    height: 10px;
+    background-color: #001D7F;
+}
+
+#logo
+{
+    display: inline-block;
+    font-size: 26px;
+    font-family: Papyrus, Verdana, Helvetica, Sans-Serif;
+    font-weight: bold;
+    color: white;
+    background-color: #001D7F;
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
+#nav-bar
+{
+    text-align: center;
+    margin: 0 auto;
+    display: block;
+}
+
+nav.primary
+{
+    display: inline-block;
+    text-align: right;
+}
+
+nav.primary ul
+{
+    margin: 2px;
+    padding: 0;
+}
+
+nav.primary ul li
+{
+    list-style: none;
+    display: inline;
+}
+
+nav.authentication
+{
+    display: inline-block;
+    text-align: left;
+}
+
+nav.authentication ul
+{
+    margin: 2px;
+    padding: 0;
+}
+
+nav.authentication ul li
+{
+    list-style: none;
+    display: inline;
+}
+
+nav.footer
+{
+    display: inline-block;
+    float: right;
+    padding: 0;
+    margin: 0;
+    font-size: 10px;
+}
+
+nav.footer ul li
+{
+    list-style: none;
+    display: inline;
+    padding: 0;
+    margin: 0;
+}
+
+form {
+    display: inline-block;
+    width: 100%;
+}
+
+form > * {
+    float: left;
+    display: inline;
+    width: 100px;
+}
+
+#content
+{
+    width: 800px;
+    text-align: center;
+    margin: 10px auto 10px auto;
+    padding: 10px 10px 10px 10px;
+    background-color: #FFFAE4;
+    -webkit-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+#prune-form {
+    display: inline-block;
+    width: 90%;
+}
+
+#main-url-container {
+    width:500px;
+}
+
+#long-url {
+    width: 100%;
+    height: 150px;
+}
+
+#shorten {
+    display: inline;
+    float: right;
+    margin-top: 5px;
+}
+
+#short-link {
+    text-align: left;
+}
+
+#short-link > h2 {
+    display: inline;
+}
+
+#copy-button {
+    display: inline;
+}
