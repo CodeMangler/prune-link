@@ -2,30 +2,43 @@
 
 {% block content %}
 {% if user_profile %}
-<div>
-    <a href="/profile/edit">Edit Profile</a>
-    <img id="profile-pic" src="{{ user_profile.picture_url }}"  alt="Profile Picture from Gravatar"/>
-
-    {% if user_profile.display_name %}
-    {{ user_profile.display_name }}
-    {% endif %}
-
-    {% if user_profile.about %}
-    About: {{ user_profile.about }}
-    {% endif %}
-
-    {% if user_profile.websites %}
-    Websites:
-    <ul>
-    {% for website in user_profile.websites %}
-        <li><a href="{{ website }}">{{ website }}</a></li>
-    {% endfor %}
-    </ul>
-    {% endif %}
-
-    {% if user_profile.twitter %}
-        Twitter URL
-    {% endif %}
+<div class="profile">
+    <div class="left">
+        <img id="profile-pic" src="{{ user_profile.picture_url }}" alt="Profile Picture from Gravatar"/>
+    </div>
+    <div class="right">
+        <div class="left">
+            {% if user_profile.display_name %}
+            <span class="profile-username left">
+            {{ user_profile.display_name }}
+            </span>
+            <span class="button right">
+                <a id="profile-edit-button" href="/profile/edit">Edit</a>
+            </span>
+            {% endif %}
+        </div>
+        <br/>
+        {% if user_profile.websites %}
+        <span class="profile-websites">
+        <ul>
+            {% for website in user_profile.websites %}
+            <li><a href="{{ website }}">{{ website }}</a></li>
+            {% endfor %}
+        </ul>
+        </span>
+        {% endif %}
+        <br/>
+        {% if user_profile.twitter %}
+        <span class="profile-twitter left">
+            <a href="http://twitter.com/#!/{{ user_profile.twitter }}">{{ user_profile.twitter }}</a>
+        </span>
+        {% endif %}
+    </div>
 </div>
 {% endif %}
+<script>
+    $(document).ready(function() {
+        $("#profile-edit-button").button();
+    });
+</script>
 {% endblock %}

@@ -17,26 +17,27 @@
 <body>
 <div id="page">
     <header>
-        <div id="top-bar"></div>
-        <div id="nav-bar">
-            <nav class="primary">
-                <ul>
-                    <li><a id="stats-action" href="/stats">Stats</a></li>
-                </ul>
-            </nav>
+        <div id="top-bar">
             <div id="logo">
                 <a href="/">prun.in</a>
             </div>
-            <nav class="authentication">
-                <ul>
-                    {% if not user %}
-                    <li><a id="login-action" href="{{ login_url }}">Login</a></li>
-                    {% else %}
-                    <li><a id="profile-action" href="/profile">Profile</a></li>
-                    <li><a id="logout-action" href="{{ logout_url }}">Logout</a></li>
-                    {% endif %}
-                </ul>
-            </nav>
+            <div id="nav-bar">
+                <nav class="primary">
+                    <ul>
+                        <li><a id="stats-action" href="/stats">Stats</a></li>
+                    </ul>
+                </nav>
+                <nav class="authentication">
+                    <ul>
+                        {% if not user %}
+                        <li><a id="login-action" href="{{ login_url }}">Login</a></li>
+                        {% else %}
+                        <li><a id="profile-action" href="/profile">Profile</a></li>
+                        <li><a id="logout-action" href="{{ logout_url }}">Logout</a></li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            </div>
         </div>
     </header>
     <div id="content">

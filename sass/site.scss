@@ -15,6 +15,7 @@ header
 	margin: 0;
 	padding: 0;
     width: 100%;
+    text-align: center;
 }
 
 footer
@@ -52,27 +53,35 @@ footer p
 
 #top-bar
 {
-    height: 10px;
-    background-color: #001D7F;
+    display: inline-block;
+    width: 700px;
+    margin: 0 auto;
 }
 
 #logo
 {
-    display: inline-block;
+    display: inline;
     font-size: 26px;
     font-family: Papyrus, Verdana, Helvetica, Sans-Serif;
     font-weight: bold;
     color: white;
-    background-color: #001D7F;
     padding-left: 2px;
     padding-right: 2px;
+    display: inline;
+    float: left;
+}
+
+#logo > a
+{
+    text-decoration: none;
 }
 
 #nav-bar
 {
     text-align: center;
     margin: 0 auto;
-    display: block;
+    display: inline;
+    float: right;
 }
 
 nav.primary
@@ -139,6 +148,14 @@ form > * {
     width: 100px;
 }
 
+div {
+    position: relative;
+}
+
+textarea {
+    resize: none;
+}
+
 #content
 {
     width: 800px;
@@ -153,7 +170,7 @@ form > * {
 
 #prune-form {
     display: inline-block;
-    width: 90%;
+    width: 500px;
 }
 
 #main-url-container {
@@ -177,8 +194,57 @@ form > * {
 
 #short-link > h2 {
     display: inline;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#short-link > label {
+    font-size: 18px;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
 #copy-button {
     display: inline;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.profile {
+    display: inline-block;
+    width: 100%;
+}
+
+#profile-pic {
+    padding-right: 5px;
+}
+
+.profile-username {
+    font-weight: bold;
+    font-size: large;
+}
+
+.profile-websites {
+    text-align: left;
+}
+
+.profile-websites > ul {
+    list-style-type: none;
+}
+
+.profile form {
+    display: inline-block;
+    width: 100%;
+}
+
+.profile > .right {
+    display: inline-block;
+    width: 500px;
+    float: none;
 }

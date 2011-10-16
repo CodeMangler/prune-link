@@ -1,4 +1,4 @@
-/* line 17, c:/Ruby187/lib/ruby/gems/1.8/gems/compass-0.11.3/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 17, ../../../../../Ruby192/lib/ruby/gems/1.9.1/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -20,47 +20,46 @@ time, mark, audio, video {
   vertical-align: baseline;
 }
 
-/* line 20, c:/Ruby187/lib/ruby/gems/1.8/gems/compass-0.11.3/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 20, ../../../../../Ruby192/lib/ruby/gems/1.9.1/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 body {
   line-height: 1;
 }
 
-/* line 22, c:/Ruby187/lib/ruby/gems/1.8/gems/compass-0.11.3/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 22, ../../../../../Ruby192/lib/ruby/gems/1.9.1/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 ol, ul {
   list-style: none;
 }
 
-/* line 24, c:/Ruby187/lib/ruby/gems/1.8/gems/compass-0.11.3/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 24, ../../../../../Ruby192/lib/ruby/gems/1.9.1/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-/* line 26, c:/Ruby187/lib/ruby/gems/1.8/gems/compass-0.11.3/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 26, ../../../../../Ruby192/lib/ruby/gems/1.9.1/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 caption, th, td {
   text-align: left;
   font-weight: normal;
   vertical-align: middle;
 }
 
-/* line 28, c:/Ruby187/lib/ruby/gems/1.8/gems/compass-0.11.3/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 28, ../../../../../Ruby192/lib/ruby/gems/1.9.1/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 q, blockquote {
   quotes: none;
 }
-/* line 101, c:/Ruby187/lib/ruby/gems/1.8/gems/compass-0.11.3/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 101, ../../../../../Ruby192/lib/ruby/gems/1.9.1/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 q:before, q:after, blockquote:before, blockquote:after {
   content: "";
   content: none;
 }
 
-/* line 30, c:/Ruby187/lib/ruby/gems/1.8/gems/compass-0.11.3/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 30, ../../../../../Ruby192/lib/ruby/gems/1.9.1/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 a img {
   border: none;
 }
 
-/* line 115, c:/Ruby187/lib/ruby/gems/1.8/gems/compass-0.11.3/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
+/* line 114, ../../../../../Ruby192/lib/ruby/gems/1.9.1/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
   display: block;
 }
 
@@ -79,9 +78,10 @@ header {
   margin: 0;
   padding: 0;
   width: 100%;
+  text-align: center;
 }
 
-/* line 21, ../sass/site.scss */
+/* line 22, ../sass/site.scss */
 footer {
   padding: 0px 0 0 10px;
   border-top: thin #4671D5 solid;
@@ -91,7 +91,7 @@ footer {
   width: 700px;
 }
 
-/* line 31, ../sass/site.scss */
+/* line 32, ../sass/site.scss */
 footer p {
   text-align: left;
   float: left;
@@ -99,83 +99,91 @@ footer p {
   display: inline;
 }
 
-/* line 39, ../sass/site.scss */
+/* line 40, ../sass/site.scss */
 #page {
   width: 100%;
 }
 
-/* line 44, ../sass/site.scss */
+/* line 45, ../sass/site.scss */
 .error {
   color: red;
 }
 
-/* line 49, ../sass/site.scss */
+/* line 50, ../sass/site.scss */
 .message {
   border: black solid 1px;
 }
 
-/* line 54, ../sass/site.scss */
+/* line 55, ../sass/site.scss */
 #top-bar {
-  height: 10px;
-  background-color: #001D7F;
+  display: inline-block;
+  width: 700px;
+  margin: 0 auto;
 }
 
-/* line 60, ../sass/site.scss */
+/* line 62, ../sass/site.scss */
 #logo {
-  display: inline-block;
+  display: inline;
   font-size: 26px;
   font-family: Papyrus, Verdana, Helvetica, Sans-Serif;
   font-weight: bold;
   color: white;
-  background-color: #001D7F;
   padding-left: 2px;
   padding-right: 2px;
+  display: inline;
+  float: left;
 }
 
-/* line 72, ../sass/site.scss */
+/* line 75, ../sass/site.scss */
+#logo > a {
+  text-decoration: none;
+}
+
+/* line 80, ../sass/site.scss */
 #nav-bar {
   text-align: center;
   margin: 0 auto;
-  display: block;
+  display: inline;
+  float: right;
 }
 
-/* line 79, ../sass/site.scss */
+/* line 88, ../sass/site.scss */
 nav.primary {
   display: inline-block;
   text-align: right;
 }
 
-/* line 85, ../sass/site.scss */
+/* line 94, ../sass/site.scss */
 nav.primary ul {
   margin: 2px;
   padding: 0;
 }
 
-/* line 91, ../sass/site.scss */
+/* line 100, ../sass/site.scss */
 nav.primary ul li {
   list-style: none;
   display: inline;
 }
 
-/* line 97, ../sass/site.scss */
+/* line 106, ../sass/site.scss */
 nav.authentication {
   display: inline-block;
   text-align: left;
 }
 
-/* line 103, ../sass/site.scss */
+/* line 112, ../sass/site.scss */
 nav.authentication ul {
   margin: 2px;
   padding: 0;
 }
 
-/* line 109, ../sass/site.scss */
+/* line 118, ../sass/site.scss */
 nav.authentication ul li {
   list-style: none;
   display: inline;
 }
 
-/* line 115, ../sass/site.scss */
+/* line 124, ../sass/site.scss */
 nav.footer {
   display: inline-block;
   float: right;
@@ -184,7 +192,7 @@ nav.footer {
   font-size: 10px;
 }
 
-/* line 124, ../sass/site.scss */
+/* line 133, ../sass/site.scss */
 nav.footer ul li {
   list-style: none;
   display: inline;
@@ -192,20 +200,30 @@ nav.footer ul li {
   margin: 0;
 }
 
-/* line 131, ../sass/site.scss */
+/* line 140, ../sass/site.scss */
 form {
   display: inline-block;
   width: 100%;
 }
 
-/* line 136, ../sass/site.scss */
+/* line 145, ../sass/site.scss */
 form > * {
   float: left;
   display: inline;
   width: 100px;
 }
 
-/* line 143, ../sass/site.scss */
+/* line 151, ../sass/site.scss */
+div {
+  position: relative;
+}
+
+/* line 155, ../sass/site.scss */
+textarea {
+  resize: none;
+}
+
+/* line 160, ../sass/site.scss */
 #content {
   width: 800px;
   text-align: center;
@@ -217,41 +235,100 @@ form > * {
   box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
 }
 
-/* line 154, ../sass/site.scss */
+/* line 171, ../sass/site.scss */
 #prune-form {
   display: inline-block;
-  width: 90%;
+  width: 500px;
 }
 
-/* line 159, ../sass/site.scss */
+/* line 176, ../sass/site.scss */
 #main-url-container {
   width: 500px;
 }
 
-/* line 163, ../sass/site.scss */
+/* line 180, ../sass/site.scss */
 #long-url {
   width: 100%;
   height: 150px;
 }
 
-/* line 168, ../sass/site.scss */
+/* line 185, ../sass/site.scss */
 #shorten {
   display: inline;
   float: right;
   margin-top: 5px;
 }
 
-/* line 174, ../sass/site.scss */
+/* line 191, ../sass/site.scss */
 #short-link {
   text-align: left;
 }
 
-/* line 178, ../sass/site.scss */
+/* line 195, ../sass/site.scss */
 #short-link > h2 {
+  display: inline;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* line 201, ../sass/site.scss */
+#short-link > label {
+  font-size: 18px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+/* line 207, ../sass/site.scss */
+#copy-button {
   display: inline;
 }
 
-/* line 182, ../sass/site.scss */
-#copy-button {
-  display: inline;
+/* line 211, ../sass/site.scss */
+.left {
+  float: left;
+}
+
+/* line 215, ../sass/site.scss */
+.right {
+  float: right;
+}
+
+/* line 219, ../sass/site.scss */
+.profile {
+  display: inline-block;
+  width: 100%;
+}
+
+/* line 224, ../sass/site.scss */
+#profile-pic {
+  padding-right: 5px;
+}
+
+/* line 228, ../sass/site.scss */
+.profile-username {
+  font-weight: bold;
+  font-size: large;
+}
+
+/* line 233, ../sass/site.scss */
+.profile-websites {
+  text-align: left;
+}
+
+/* line 237, ../sass/site.scss */
+.profile-websites > ul {
+  list-style-type: none;
+}
+
+/* line 241, ../sass/site.scss */
+.profile form {
+  display: inline-block;
+  width: 100%;
+}
+
+/* line 246, ../sass/site.scss */
+.profile > .right {
+  display: inline-block;
+  width: 500px;
+  float: none;
 }

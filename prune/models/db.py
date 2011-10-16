@@ -180,6 +180,12 @@ class UserLink(db.Model):
     modified_on = db.DateTimeProperty(auto_now=True)
 
     @classmethod
+    def all_for_user(cls, prun_user):
+        # Doesn't quite fetch "all" records, since that's not possible with GQL. Fetches about 1000. Use the paging version for precise results.
+        # 1000 records used to be cap for fetching, but it's been removed. Not sure what the new cap is now.
+        return db.GqlQuery('SELECT * FROM UserLink WHERE prun_user_id = :1', prun_user.id()).fetch(5000, 0)
+
+    @classmethod
     def for_user(cls, prun_user, page=0, records_per_page=10):
         return db.GqlQuery('SELECT * FROM UserLink WHERE prun_user_id = :1', prun_user.id()).fetch(limit=records_per_page, offset=(page * records_per_page))
 

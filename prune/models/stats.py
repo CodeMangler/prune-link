@@ -7,7 +7,7 @@ def filter_value(list_of_values, value):
     return [x for x in list_of_values if x != value]
 
 def gather_stats(prun_user):
-    user_links = UserLink.for_user(prun_user)
+    user_links = UserLink.all_for_user(prun_user)
     return filter_value([LinkStats.gather_for(user_link.short_url) for user_link in user_links], None)
 
 class LinkStats:
@@ -19,6 +19,7 @@ class LinkStats:
         if link:
             self.url = link.url
             self.title = link.title
+            self.creation_date = link.created_on
             self.is_aggregate = False
             self.aggregate_url = AggregateLink.find_by_url(self.url).aggregate_url
             self.is_valid = True
@@ -26,6 +27,7 @@ class LinkStats:
             aggregate_link = AggregateLink.find_by_aggregate_url(short_url)
             if aggregate_link:
                 self.url = aggregate_link.url
+                self.creation_date = aggregate_link.created_on
                 self.title = self.find_title(self.url)
                 self.is_aggregate = True
                 self.aggregate_url = short_url
@@ -38,6 +40,7 @@ class LinkStats:
         self.aggregate_url = None
         self.url = ''
         self.title = ''
+        self.creation_date = None
         self.is_aggregate = False
         self.click_count = 0
         self.total_click_count = 0
