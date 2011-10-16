@@ -300,35 +300,69 @@ textarea {
 }
 
 /* line 224, ../sass/site.scss */
-#profile-pic {
+.profile-picture {
+  float: left;
+  width: 100px;
+  display: block;
+  text-align: right;
+}
+
+/* line 231, ../sass/site.scss */
+.profile-picture > img {
   padding-right: 5px;
 }
 
-/* line 228, ../sass/site.scss */
+/* line 235, ../sass/site.scss */
+.profile-details {
+  float: left;
+  position: relative;
+  text-align: left;
+  display: block;
+  width: 600px;
+}
+
+/* line 243, ../sass/site.scss */
+.profile-details > div {
+  display: inline-block;
+  padding-bottom: 8px;
+}
+
+/* line 248, ../sass/site.scss */
 .profile-username {
   font-weight: bold;
   font-size: large;
 }
 
-/* line 233, ../sass/site.scss */
-.profile-websites {
-  text-align: left;
+/* line 256, ../sass/site.scss */
+.profile-websites > ul > li {
+  list-style: none;
 }
 
-/* line 237, ../sass/site.scss */
-.profile-websites > ul {
-  list-style-type: none;
-}
-
-/* line 241, ../sass/site.scss */
+/* line 263, ../sass/site.scss */
 .profile form {
-  display: inline-block;
-  width: 100%;
+  width: 400px;
 }
 
-/* line 246, ../sass/site.scss */
-.profile > .right {
-  display: inline-block;
-  width: 500px;
-  float: none;
+/* line 267, ../sass/site.scss */
+form > label, form > input, form > textarea {
+  display: block;
+  width: 120px;
+  float: left;
+  margin-bottom: 10px;
+}
+
+/* line 274, ../sass/site.scss */
+form > label {
+  text-align: right;
+  padding-right: 20px;
+}
+
+/* line 279, ../sass/site.scss */
+form > input[type='submit'] {
+  float: right;
+}
+
+/* line 283, ../sass/site.scss */
+br {
+  clear: left;
 }

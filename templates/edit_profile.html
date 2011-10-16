@@ -3,22 +3,27 @@
 {% block content %}
 {% if user_profile %}
 <div class="profile">
-    <div class="left">
+    <div class="profile-picture">
         <img id="profile-pic" src="{{ user_profile.picture_url }}"  alt="Profile Picture from Gravatar"/>
     </div>
-    <div class="right">
+    <div class="profile-details">
         <form action="/profile/edit" method="post">
             <label for="display-name">Display Name</label><input name="display-name" id="display-name" type="text" value="{{ user_profile.display_name }}" />
             <br/>
-            <label for="about">About Myself</label><textarea name="about" id="about" cols="50" rows="5">{{ user_profile.about }}</textarea>
+            <label for="about">About Me</label><textarea name="about" id="about" cols="50" rows="5">{{ user_profile.about }}</textarea>
             <br/>
             <label for="twitter">Twitter</label><input name="twitter" id="twitter" type="text" value="{{ user_profile.twitter }}" />
             <br/>
             <label for="websites">Websites</label><textarea name="websites" id="websites" cols="50" rows="5">{{ websites_list }}</textarea>
             <br/>
-            <input type="submit" value="Update" class="button"/>
+            <input id="submit-button" type="submit" value="Update" class="button"/>
         </form>
     </div>
 </div>
+<script>
+    $(document).ready(function() {
+        $("#submit-button").button();
+    });
+</script>
 {% endif %}
 {% endblock %}

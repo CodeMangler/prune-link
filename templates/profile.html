@@ -3,42 +3,40 @@
 {% block content %}
 {% if user_profile %}
 <div class="profile">
-    <div class="left">
-        <img id="profile-pic" src="{{ user_profile.picture_url }}" alt="Profile Picture from Gravatar"/>
+    <div class="profile-picture">
+        <img src="{{ user_profile.picture_url }}" alt="Profile Picture from Gravatar"/>
     </div>
-    <div class="right">
-        <div class="left">
-            {% if user_profile.display_name %}
-            <span class="profile-username left">
-            {{ user_profile.display_name }}
-            </span>
-            <span class="button right">
-                <a id="profile-edit-button" href="/profile/edit">Edit</a>
-            </span>
-            {% endif %}
+    <div class="profile-details">
+        <div class="right">
+            <a id="profile-edit-button" href="/profile/edit">Edit</a>
         </div>
+        {% if user_profile.display_name %}
+        <div class="profile-username">
+        {{ user_profile.display_name }}
+        </div>
+        {% endif %}
         <br/>
         {% if user_profile.websites %}
-        <span class="profile-websites">
+        <div class="profile-websites">
         <ul>
             {% for website in user_profile.websites %}
             <li><a href="{{ website }}">{{ website }}</a></li>
             {% endfor %}
         </ul>
-        </span>
+        </div>
         {% endif %}
         <br/>
         {% if user_profile.twitter %}
-        <span class="profile-twitter left">
+        <div class="profile-twitter">
             <a href="http://twitter.com/#!/{{ user_profile.twitter }}">{{ user_profile.twitter }}</a>
-        </span>
+        </div>
         {% endif %}
     </div>
 </div>
-{% endif %}
 <script>
     $(document).ready(function() {
         $("#profile-edit-button").button();
     });
 </script>
+{% endif %}
 {% endblock %}
