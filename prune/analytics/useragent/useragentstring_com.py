@@ -22,7 +22,7 @@ class UserAgentParser:
 
         user_agent_info = memcache.get(memcache_key)
         if not user_agent_info: # Make an API call since we can't find a cached value..
-            json_result = fetch_url(constants.USER_AGENT_REQUEST_URL.format(urllib.quote(self.ua_string)))
+            json_result = fetch_url(constants.USER_AGENT_REQUEST_URL % {"UAS" : urllib.quote(self.ua_string)})
             if json_result:
                 user_agent_info = json.loads(json_result)
                 memcache.set(memcache_key, user_agent_info) # Cache it

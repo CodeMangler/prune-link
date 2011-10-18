@@ -20,7 +20,7 @@ class GeoLocator:
 
         geo_location = memcache.get(memcache_key)
         if not geo_location: # Call the API if we can't find a cached value..
-            json_result = fetch_url(constants.GEOLOCATION_REQUEST_URL.format(self.ip))
+            json_result = fetch_url(constants.GEOLOCATION_REQUEST_URL % {"IP" : self.ip})
             if json_result:
                 geo_location = json.loads(json_result)
                 memcache.set(memcache_key, geo_location) # Cache it

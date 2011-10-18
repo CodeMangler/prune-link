@@ -70,7 +70,7 @@ class IndexHandler(webapp.RequestHandler):
 
             self.redirect(resolved_url)
         else:
-            self.logger.log(None, None, None, RequestResult.ERROR, '404: /{0} not found'.format(request_path))
+            self.logger.log(None, None, None, RequestResult.ERROR, '404: /%(PATH) not found' % {"PATH" : request_path})
             show_error_page(self, 404, "The requested page was not found")
             return
 
