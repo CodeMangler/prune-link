@@ -7,7 +7,7 @@ import re
 class Link(db.Model):
     short_url = db.StringProperty()
     url = db.StringProperty() # Not using a LinkProperty sine it expects the values to always be proper Links, which's not quite guaranteed..
-    title = db.StringProperty()
+    title = db.StringProperty(multiline=True)
     created_on = db.DateTimeProperty(auto_now_add=True)
     modified_on = db.DateTimeProperty(auto_now=True)
 
@@ -38,7 +38,7 @@ class Link(db.Model):
 class AggregateLink(db.Model):
     aggregate_url = db.StringProperty()
     url = db.StringProperty()
-    title = db.StringProperty()
+    title = db.StringProperty(multiline=True)
     created_on = db.DateTimeProperty(auto_now_add=True)
     modified_on = db.DateTimeProperty(auto_now=True)
 
