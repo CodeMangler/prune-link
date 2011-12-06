@@ -2,58 +2,65 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * General page setup
  */
-#dt_example {
-	font: 80%/1.45em "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;
-	margin: 0;
-	padding: 0;
-	color: #333;
-	background-color: #fff;
-}
-
-
-#dt_example #container {
+#container {
 	width: 800px;
 	margin: 30px auto;
 	padding: 0;
 }
 
+#stats-table {
+	font: 80%/1.45em "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;
+	margin: 0 auto;
+	padding: 0;
+	color: #333;
+	background-color: #fff;
+    width: 100%;
+    border: 1px solid;
+}
 
-#dt_example #footer {
+#stats-table th {
+    font-size: 20px;
+    font-weight: bold;
+    height: 30px;
+    text-align: center;
+    padding: 10px;
+    border: 1px solid;
+}
+
+#stats-table td {
+    padding: 5px;
+    text-align: center;
+    border: 1px solid;
+}
+
+#stats-table #footer {
 	margin: 50px auto 0 auto;
 	padding: 0;
 }
 
-#dt_example #demo {
-	margin: 30px auto 0 auto;
-}
-
-#dt_example .demo_jui {
-	margin: 30px auto 0 auto;
-}
-
-#dt_example .big {
+#stats-table .big {
 	font-size: 1.3em;
 	font-weight: bold;
 	line-height: 1.6em;
 	color: #4E6CA3;
 }
 
-#dt_example .spacer {
+#stats-table .spacer {
 	height: 20px;
 	clear: both;
 }
 
-#dt_example .clear {
+#stats-table .clear {
 	clear: both;
 }
 
-#dt_example pre {
+#stats-table pre {
 	padding: 15px;
 	background-color: #F5F5F5;
 	border: 1px solid #CCCCCC;
 }
 
-#dt_example h1 {
+#stats-table h1 {
 	margin-top: 2em;
 	font-size: 1.3em;
 	font-weight: normal;
@@ -63,7 +70,7 @@
 	clear: both;
 }
 
-#dt_example h2 {
+#stats-table h2 {
 	font-size: 1.2em;
 	font-weight: normal;
 	line-height: 1.6em;
@@ -71,16 +78,16 @@
 	clear: both;
 }
 
-#dt_example a {
+#stats-table a {
 	color: #0063DC;
 	text-decoration: none;
 }
 
-#dt_example a:hover {
+#stats-table a:hover {
 	text-decoration: underline;
 }
 
-#dt_example ul {
+#stats-table ul {
 	color: #4E6CA3;
 }
 
@@ -127,18 +134,15 @@
 }
 
 .dataTables_length {
-	width: 40%;
 	float: left;
 }
 
 .dataTables_filter {
-	width: 50%;
 	float: right;
 	text-align: right;
 }
 
 .dataTables_info {
-	width: 60%;
 	float: left;
 }
 

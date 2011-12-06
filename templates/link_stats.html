@@ -12,12 +12,12 @@
             {{ link_stats.click_count }} out of {{ link_stats.total_click_count }}
             <a href="/stats/{{link_stats.aggregate_url}}">Aggregate Stats</a>
         </div>
-        <div>
-            <div>{% include "charts/clicks.html" %}</div>
-            <div>{% include "charts/referrers.html" %}</div>
-            <div>{% include "charts/locations_map.html" %}</div>
-            <div>{% include "charts/browsers.html" %}</div>
-            <div>{% include "charts/operating_systems.html" %}</div>
+        <div class="charts-container">
+            <div class="chart">{% include "charts/clicks.html" %}</div>
+            <div class="chart">{% include "charts/referrers.html" %}</div>
+            <div class="chart">{% include "charts/locations_map.html" %}</div>
+            <div class="chart">{% include "charts/browsers.html" %}</div>
+            <div class="chart">{% include "charts/operating_systems.html" %}</div>
         </div>
 {% else %}
         Invalid link

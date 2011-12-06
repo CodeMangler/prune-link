@@ -5,21 +5,23 @@
 <link href="/stylesheets/datatables.css" rel="stylesheet" type="text/css">
 <table id="stats-table">
     <thead>
-        <tr>
-            <th>Link</th>
-            <th>Clicks</th>
-            <th>Stats</th>
-            <th>Date</th>
-        </tr>
+    <tr>
+        <th>Link</th>
+        <th>Title</th>
+        <th>Clicks</th>
+        <th>Stats</th>
+        <th>Date</th>
+    </tr>
     </thead>
     <tbody>
     {% for link_stat in user_link_stats %}
-        <tr>
-           <td>{{ link_stat.click_count }} of {{ link_stat.total_click_count }}</td>
-           <td><a href="{{ link_stat.url }}">{{ link_stat.title }}</a> <a href="{{ link_stat.url }}">{{ link_stat.url }}</a></td>
-           <td><a href="/stats/{{ link_stat.short_url }}">Stats</a></td>
-           <td>{{ link_stat.creation_date|date:"M d, Y" }}</td>
-        </tr>
+    <tr>
+        <td><a href="{{ link_stat.url }}">{{ link_stat.url }}</a></td>
+        <td><a href="{{ link_stat.url }}">{{ link_stat.title }}</a></td>
+        <td>{{ link_stat.click_count }} of {{ link_stat.total_click_count }}</td>
+        <td><a href="/stats/{{ link_stat.short_url }}">Stats</a></td>
+        <td>{{ link_stat.creation_date|date:"M d, Y" }}</td>
+    </tr>
     {% endfor %}
     </tbody>
 </table>

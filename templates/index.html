@@ -19,6 +19,7 @@
             <script type="text/javascript">
                 ZeroClipboard.setMoviePath('/flash/ZeroClipboard.swf');
                 var clip = new ZeroClipboard.Client();
+                clip.setHandCursor(true);
                 clip.setText("http://prun.in/{{ short_url }}");
                 clip.glue('copy-button');
             </script>
@@ -29,6 +30,9 @@
     <script>
         $(document).ready(function() {
             $("#shorten").button();
+{% if short_url %}
+            $("#copy-button").button();
+{% endif %}
         });
     </script>
 </div>
