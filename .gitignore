@@ -8,6 +8,5 @@
 *.pid
 *.tmp*
 *.lock
-*idea*/*
 *.pyc
 \.sass-cache/*
