@@ -21,6 +21,9 @@ from prune.analytics.geolocation.iponfodb import GeoLocator
 __author__ = 'CodeMangler'
 
 class StatsWorker(webapp.RequestHandler):
+
+    to_commit = []
+
     def post(self):
         request_data_key = self.request.get('request_data_key')
         request_data = RequestData.get(request_data_key)
@@ -42,9 +45,16 @@ class StatsWorker(webapp.RequestHandler):
                     self.update_stats(aggregate_url, request_data, raw_headers)
 
             request_data.processed = True # Mark the request data as processed, so that we can maybe delete it later..
-            request_data.put()
+            self.to_commit.append(request_data)
+
+            self.commit_entities()
+
+    def commit_entities(self):
+        # Do a match update
+        db.put(self.to_commit)
 
     def update_stats(self, short_url, request_data, raw_headers):
+        # TODO: Parallelize
         self.update_request_count(short_url)
         self.update_request_ip(short_url, request_data)
         self.update_referrer(short_url, request_data, raw_headers)
@@ -54,27 +64,26 @@ class StatsWorker(webapp.RequestHandler):
     def update_request_count(self, short_url):
         request_count = RequestCount.find_or_create({'short_url': short_url})
         request_count.increment()
-        request_count.put()
+        self.to_commit.append(request_count)
 
         request_date =  RequestDate.find_or_create({'short_url': short_url, 'date': db.DateProperty().now()}) # NOTE: App Engine uses 'UTC' Dates (and times)..
         request_date.increment()
-        request_date.put()
+        self.to_commit.append(request_date)
 
     def update_referrer(self, short_url, request_data, headers):
         if not request_data.referrer:
             request_data.referrer = headers.get('Referer') # .get(...) instead of [...] to avoid KeyError
-            request_data.put()
 
         referrer_url = request_data.referrer if request_data.referrer else ''
         request_referrer = RequestReferrer.find_or_create({'short_url': short_url, 'date': db.DateProperty().now(),
                                                            'referrer': ReferrerAnalyzer.referrer_type(referrer_url), 'referrer_url': referrer_url})
         request_referrer.increment()
-        request_referrer.put()
+        self.to_commit.append(request_referrer)
 
     def update_request_ip(self, short_url, request_data):
         request_ip = RequestIp.find_or_create({'short_url': short_url, 'date': db.DateProperty().now(), 'ip': request_data.request_address})
         request_ip.increment()
-        request_ip.put()
+        self.to_commit.append(request_ip)
 
     def update_user_agent(self, short_url, raw_headers):
         user_agent_string = raw_headers.get('User-Agent') # .get(...) instead of [...] to avoid KeyError
@@ -83,7 +92,7 @@ class StatsWorker(webapp.RequestHandler):
             # Store Request User Agent String
             request_user_agent_string = RequestUserAgentString.find_or_create({'short_url': short_url, 'date': db.DateProperty().now(), 'user_agent_string': user_agent_string})
             request_user_agent_string.increment()
-            request_user_agent_string.put()
+            self.to_commit.append(request_user_agent_string)
 
             # Explode user-agent string into user-agent and OS (external service)?
             parser = UserAgentParser(user_agent_string)
@@ -100,13 +109,13 @@ class StatsWorker(webapp.RequestHandler):
             # Store actual user agent and OS and update their counts
             request_user_agent = RequestUserAgent.find_or_create({'short_url': short_url, 'date': db.DateProperty().now(), 'user_agent': user_agent, 'version': agent_version, 'language': language})
             request_user_agent.increment()
-            request_user_agent.put()
+            self.to_commit.append(request_user_agent)
 
             request_operating_system = RequestOperatingSystem.find_or_create({'short_url': short_url, 'date': db.DateProperty().now(), 'operating_system': operating_system,
                                                                               'version': os_version, 'kernel_version': kernel_version,
                                                                               'variant': os_variant, 'language': language})
             request_operating_system.increment()
-            request_operating_system.put()
+            self.to_commit.append(request_operating_system)
 
     def update_location(self, short_url, request_data):
         locator = GeoLocator(request_data.request_address)
@@ -120,7 +129,7 @@ class StatsWorker(webapp.RequestHandler):
                                                                'city': locator.city, 'state': locator.state,
                                                                'country': locator.country, 'zip_postal_code': locator.zip_postal_code})
             request_location.increment()
-            request_location.put()
+            self.to_commit.append(request_location)
 
 def main():
     application = webapp.WSGIApplication([('/task/stats', StatsWorker)], debug=True)
