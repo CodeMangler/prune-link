@@ -2,7 +2,37 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="131c2af6-1f1b-43ad-9e5f-45aaed39b6b3" name="Default" comment="Implemented caching for UserAgent Parsing and GeoLocation API calls..">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/ui-bg_diagonals-medium_20_d34d17_40x40.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/ui-bg_flat_30_cccccc_40x100.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/ui-bg_flat_50_5c5c5c_40x100.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/ui-bg_gloss-wave_45_817865_500x100.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/ui-bg_gloss-wave_60_fece2f_500x100.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/ui-bg_gloss-wave_70_ffdd57_500x100.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/ui-bg_gloss-wave_90_fff9e5_500x100.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/ui-bg_highlight-soft_100_feeebd_1x100.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/ui-bg_inset-soft_30_ffffff_1x100.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/ui-icons_d19405_256x240.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/ui-icons_eb990f_256x240.png" />
+      <change type="DELETED" beforePath="C:\Workspace\Projects\prun.in\Site\prune-link\images\ui-bg_flat_0_aaaaaa_40x100.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Workspace\Projects\prun.in\Site\prune-link\images\ui-bg_flat_55_fbec88_40x100.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Workspace\Projects\prun.in\Site\prune-link\images\ui-bg_glass_75_d0e5f5_1x400.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Workspace\Projects\prun.in\Site\prune-link\images\ui-bg_glass_85_dfeffc_1x400.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Workspace\Projects\prun.in\Site\prune-link\images\ui-bg_glass_95_fef1ec_1x400.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Workspace\Projects\prun.in\Site\prune-link\images\ui-bg_gloss-wave_55_5c9ccc_500x100.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Workspace\Projects\prun.in\Site\prune-link\images\ui-bg_inset-hard_100_f5f8f9_1x100.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Workspace\Projects\prun.in\Site\prune-link\images\ui-bg_inset-hard_100_fcfdfd_1x100.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Workspace\Projects\prun.in\Site\prune-link\images\ui-icons_217bc0_256x240.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Workspace\Projects\prun.in\Site\prune-link\images\ui-icons_469bdd_256x240.png" afterPath="" />
+      <change type="MOVED" beforePath="C:\Workspace\Projects\prun.in\Site\prune-link\images\ui-icons_2e83ff_256x240.png" afterPath="$PROJECT_DIR$/images/ui-icons_fadc7a_256x240.png" />
+      <change type="MOVED" beforePath="C:\Workspace\Projects\prun.in\Site\prune-link\images\ui-icons_6da8d5_256x240.png" afterPath="$PROJECT_DIR$/images/ui-icons_3d3d3d_256x240.png" />
+      <change type="MOVED" beforePath="C:\Workspace\Projects\prun.in\Site\prune-link\images\ui-icons_cd0a0a_256x240.png" afterPath="$PROJECT_DIR$/images/ui-icons_ffe180_256x240.png" />
+      <change type="MOVED" beforePath="C:\Workspace\Projects\prun.in\Site\prune-link\images\ui-icons_d8e7f3_256x240.png" afterPath="$PROJECT_DIR$/images/ui-icons_bd7b00_256x240.png" />
+      <change type="MOVED" beforePath="C:\Workspace\Projects\prun.in\Site\prune-link\images\ui-icons_f9bd01_256x240.png" afterPath="$PROJECT_DIR$/images/ui-icons_ed9f26_256x240.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.yaml" afterPath="$PROJECT_DIR$/index.yaml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stylesheets/jquery-ui.css" afterPath="$PROJECT_DIR$/stylesheets/jquery-ui.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/master.html" afterPath="$PROJECT_DIR$/templates/master.html" />
     </list>
     <ignored path="prune-link.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -65,7 +95,26 @@
     <favorites_list name="prune-link" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="jquery-ui.css" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/stylesheets/jquery-ui.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="568" column="0" selection-start="33471" selection-end="33471" vertical-scroll-proportion="1.4826325">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="master.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/master.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="7" column="61" selection-start="273" selection-end="273" vertical-scroll-proportion="-4.576923">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -79,14 +128,12 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/templates/charts/locations_map.html" />
         <option value="$PROJECT_DIR$/prune/utils/page_utils.py" />
         <option value="$PROJECT_DIR$/prune/handlers/stats.py" />
         <option value="$PROJECT_DIR$/config.rb" />
         <option value="$PROJECT_DIR$/app.yaml" />
         <option value="$PROJECT_DIR$/../../../Contests/InterviewStreet/Circle Summation/Solution.java" />
         <option value="$PROJECT_DIR$/stylesheets/site.css" />
-        <option value="$PROJECT_DIR$/templates/master.html" />
         <option value="$PROJECT_DIR$/templates/index.html" />
         <option value="$PROJECT_DIR$/stylesheets/datatables.css" />
         <option value="$PROJECT_DIR$/prune/models/db.py" />
@@ -95,6 +142,8 @@
         <option value="$PROJECT_DIR$/sass/site.scss" />
         <option value="$PROJECT_DIR$/templates/profile.html" />
         <option value="$PROJECT_DIR$/templates/edit_profile.html" />
+        <option value="$PROJECT_DIR$/templates/master.html" />
+        <option value="$PROJECT_DIR$/stylesheets/jquery-ui.css" />
       </list>
     </option>
   </component>
@@ -132,6 +181,7 @@
     </navigator>
     <panes>
       <pane id="Favorites" />
+      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -189,29 +239,56 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="scripts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="prune-link" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="prune-link" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="sass" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="prune-link" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="prune-link" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="images" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="279" />
-    <property name="project.structure.proportion" value="0.0" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="296" />
+    <property name="project.structure.proportion" value="0.0" />
     <property name="options.splitter.main.proportions" value="0.3" />
-    <property name="recentsLimit" value="5" />
-    <property name="MemberChooser.sorted" value="false" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="293" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
+    <property name="MemberChooser.sorted" value="false" />
+    <property name="recentsLimit" value="5" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="298" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="967" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="972" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="967" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="293" />
     <property name="GoToClass.includeJavaFiles" value="false" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="292" />
@@ -228,18 +305,18 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
     <property name="options.lastSelected" value="preferences.general" />
-    <property name="project.structure.side.proportion" value="0.2" />
     <property name="DefaultHtmlFileTemplate" value="Html" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Workspace\Projects\prun.in\Site\prune-link\images" />
       <recent name="C:\Workspace\Development\Python\prune-link\stylesheets" />
       <recent name="C:\Workspace\Development\Python\prune-link\images" />
       <recent name="C:\Workspace\Development\Python\prune-link\scripts" />
       <recent name="C:\Workspace\Development\Python\prune-link\sass" />
-      <recent name="C:\Workspace\Development\Python\prune-link" />
     </key>
   </component>
   <component name="RunManager" selected="App Engine server.prune-link">
@@ -563,13 +640,13 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="2" y="1" width="1918" height="1038" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Phing Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32881355" sideWeight="0.0" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33672318" sideWeight="0.0" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32779622" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -578,7 +655,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32995194" sideWeight="0.6714761" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39989322" sideWeight="0.6714761" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32991913" sideWeight="0.67118645" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32991913" sideWeight="0.66327685" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32779622" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -636,11 +713,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/config.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="0" selection-start="857" selection-end="857" vertical-scroll-proportion="0.7046632" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/stylesheets/site.css">
       <provider selected="true" editor-type-id="text-editor">
         <state line="142" column="0" selection-start="3580" selection-end="3580" vertical-scroll-proportion="0.3626943" />
@@ -654,11 +726,6 @@
     <entry file="file://$PROJECT_DIR$/scripts/jquery.dataTables.min.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/master.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="0" selection-start="635" selection-end="708" vertical-scroll-proportion="-8.5" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/stylesheets/datatables.css">
@@ -709,6 +776,27 @@
     <entry file="file://$PROJECT_DIR$/sass/site.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state line="263" column="12" selection-start="3318" selection-end="3318" vertical-scroll-proportion="0.456621" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/master.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="61" selection-start="273" selection-end="273" vertical-scroll-proportion="-4.576923">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Program Files (x86)/Google/google_appengine/google/appengine/tools/dev_appserver.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2437" column="0" selection-start="72527" selection-end="72527" vertical-scroll-proportion="0.33214286">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stylesheets/jquery-ui.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="568" column="0" selection-start="33471" selection-end="33471" vertical-scroll-proportion="1.4826325">
+          <folding />
+        </state>
       </provider>
     </entry>
   </component>
