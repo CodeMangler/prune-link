@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="131c2af6-1f1b-43ad-9e5f-45aaed39b6b3" name="Default" comment="Implemented caching for UserAgent Parsing and GeoLocation API calls..">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.yaml" afterPath="$PROJECT_DIR$/index.yaml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/prune/tasks/stats.py" afterPath="$PROJECT_DIR$/prune/tasks/stats.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.yaml" afterPath="$PROJECT_DIR$/app.yaml" />
     </list>
     <ignored path="prune-link.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -67,44 +66,7 @@
     <favorites_list name="prune-link" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="stats.py" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/prune/tasks/stats.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="61" column="136" selection-start="2505" selection-end="2505" vertical-scroll-proportion="0.886076">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="app.yaml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app.yaml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="35" column="9" selection-start="541" selection-end="541" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="linkinfo.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/prune/tasks/linkinfo.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="db.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/prune/models/db.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="37" column="6" selection-start="1444" selection-end="1444" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -120,7 +82,6 @@
       <list>
         <option value="$PROJECT_DIR$/prune/handlers/stats.py" />
         <option value="$PROJECT_DIR$/config.rb" />
-        <option value="$PROJECT_DIR$/app.yaml" />
         <option value="$PROJECT_DIR$/../../../Contests/InterviewStreet/Circle Summation/Solution.java" />
         <option value="$PROJECT_DIR$/stylesheets/site.css" />
         <option value="$PROJECT_DIR$/templates/index.html" />
@@ -134,6 +95,7 @@
         <option value="$PROJECT_DIR$/templates/master.html" />
         <option value="$PROJECT_DIR$/stylesheets/jquery-ui.css" />
         <option value="$PROJECT_DIR$/prune/tasks/stats.py" />
+        <option value="$PROJECT_DIR$/app.yaml" />
       </list>
     </option>
   </component>
@@ -170,7 +132,8 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="Favorites" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -297,24 +260,23 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Favorites" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="279" />
-    <property name="project.structure.proportion" value="0.0" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="296" />
+    <property name="project.structure.proportion" value="0.0" />
     <property name="options.splitter.main.proportions" value="0.3" />
-    <property name="recentsLimit" value="5" />
-    <property name="MemberChooser.sorted" value="false" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="293" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
+    <property name="MemberChooser.sorted" value="false" />
+    <property name="recentsLimit" value="5" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="298" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="967" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="972" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="967" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="293" />
     <property name="GoToClass.includeJavaFiles" value="false" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="292" />
@@ -331,8 +293,8 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
     <property name="options.lastSelected" value="preferences.general" />
-    <property name="project.structure.side.proportion" value="0.2" />
     <property name="DefaultHtmlFileTemplate" value="Html" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="options.searchVisible" value="true" />
   </component>
@@ -671,7 +633,6 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Phing Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32768363" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299435" sideWeight="0.0" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -682,10 +643,11 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32995194" sideWeight="0.6714761" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39989322" sideWeight="0.6714761" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32991913" sideWeight="0.6700565" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32991913" sideWeight="0.0" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32779622" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32768363" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32963374" sideWeight="0.0" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -794,37 +756,33 @@
         <state line="7" column="61" selection-start="273" selection-end="273" vertical-scroll-proportion="0.22284645" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app.yaml">
+    <entry file="file://C:/Program Files (x86)/Google/google_appengine/google/appengine/ext/webapp/_webapp25.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="9" selection-start="541" selection-end="541" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="702" column="0" selection-start="20930" selection-end="20930" vertical-scroll-proportion="0.33215547" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/prune/tasks/linkinfo.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/prune/models/db.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="6" selection-start="1444" selection-end="1444" vertical-scroll-proportion="0.0">
+        <state line="37" column="6" selection-start="1444" selection-end="1444" vertical-scroll-proportion="0.019813519">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/prune/tasks/stats.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="61" column="136" selection-start="2505" selection-end="2505" vertical-scroll-proportion="0.886076">
+        <state line="93" column="49" selection-start="4326" selection-end="4326" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/Program Files (x86)/Google/google_appengine/google/appengine/ext/webapp/_webapp25.py">
+    <entry file="file://$PROJECT_DIR$/app.yaml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="702" column="0" selection-start="20930" selection-end="20930" vertical-scroll-proportion="0.33215547">
+        <state line="14" column="5" selection-start="225" selection-end="225" vertical-scroll-proportion="-0.24825175">
           <folding />
         </state>
       </provider>

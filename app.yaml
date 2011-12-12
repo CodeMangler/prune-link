@@ -4,13 +4,13 @@ runtime: python
 api_version: 1
 
 handlers:
-- url: /favicon.ico
+- url: /favicon\.ico
   static_files: favicon.ico
-  upload: /.*
+  upload: favicon\.ico
 
-- url: /robots.txt
+- url: /robots\.txt
   static_files: robots.txt
-  upload: /.*
+  upload: robots\.txt
 
 - url: /images
   static_dir: images
@@ -49,6 +49,9 @@ handlers:
 
 - url: .*
   script: /prune/handlers/index.py
+
+inbound_services:
+- warmup
 
 skip_files:
 - ^(.*/)?app\.yaml
